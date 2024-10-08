@@ -1,0 +1,27 @@
+.opciones{
+    background-color: lightgoldenrodyellow;
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+body{
+    background-color: bisque;
+}
+h1{
+    margin: 5%;
+}
+form{
+    padding: 5%;
+    
+}
+button{
+    padding: 5px;
+    background-color: beige;
+    margin: 10px;
+}
+button:hover{
+    background-color: blanchedalmond;
+    transform: translate(0%,-5%);
+}

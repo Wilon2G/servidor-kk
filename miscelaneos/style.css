@@ -1,0 +1,32 @@
+table{
+    border-collapse: collapse;
+    border: 3px solid purple;
+    margin-top: 30px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 80vh;
+    position: relative;
+}
+main{
+    background-color: lightcyan;
+    margin-left: 30%;
+    margin-right: 30%;
+    
+}
+.botones{
+    background-color: aqua;
+}
+    
+
+th{
+    padding-top: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
