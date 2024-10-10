@@ -1,9 +1,25 @@
 <?php
 
 function remark($text){
-    if (isset($_POST['remark'])) {
-        return "<mark>remark</mark>";
-    }
+    // if (isset($_POST['remark'])) {
+    //     $pals = str_word_count($text,1);
+    //     $palsremark=str_word_count($_POST['textomodder'],1);
+    //     $div='<div class="ocultar">kk';
+    //     foreach ($pals as $key => $pal) {
+    //         if ( in_array($pal, $palsremark) ) {
+    //             $div.= ' <mark>'.$pal.'</mark> ';
+    //         }
+    //         else {
+    //             $div.= ' '.$pal.' ';
+    //         }
+    //     }
+
+
+    //     $div=$div.'</div>';
+    //     return $div;
+    // }
+    $markpal='<mark>'.$_POST['textomodder'].'</mark>';
+    return '<div class="ocultar" id="divtramposo" onclick="occultDiv()">'.str_replace($_POST['textomodder'],$markpal,$text).'</div>';
 }
 function remove($text){
     if (isset($_POST['remove'])) {
@@ -49,7 +65,7 @@ function upper($text){
 
 function selectfun($text){
 if (isset($_POST["remark"])) {
-    return [remark($text)];
+    return [$text,remark($text)];
 }
 if (isset($_POST["remove"])) {
     return [remove($text)];
@@ -82,6 +98,9 @@ function mostrarnum($num){
     }
     if (isset($_POST["countv"])) {
         return "<p>Hay ".$num." vocales</p>";    
+    }
+    if (isset($_POST["remark"])) {
+        return $num;
     }
     return "err";
 

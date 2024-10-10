@@ -28,12 +28,17 @@
 
     print ("<main><div class=\"opciones\">");
     print ("<form  action=\"" . $_SERVER['PHP_SELF'] . "\" method=\"POST\">");
-    print("<textarea name=\"textomodder\" rows=\"4\" cols=\"20\" placeholder=\"Escriba aquí lo que quiera resaltar, quitar, reemplazar...\"></textarea>");
+    print("<textarea class=\"widthh\" name=\"textomodder\" rows=\"4\" cols=\"20\" placeholder=\"Escriba aquí lo que quiera resaltar, quitar, reemplazar...\"></textarea>");
     print("<div class=\"occult\"></div>");
-    print("<textarea name=\"texto\" rows=\"20\" cols=\"40\" >".$text."</textarea>");
+    print("<div class=\"poss\">");
+    print("<textarea class=\"widthh\" name=\"texto\" rows=\"20\" cols=\"40\" >".$text."</textarea>");
     if (count($sol)>1) {
-       print(mostrarnum($num)) ;
-    }
+        print(mostrarnum($num)) ;
+     }
+    print("</div>");
+
+    
+    
     print("<input type=\"submit\" name=\"remark\" value=\"remark\">");
     print("<input type=\"submit\" name=\"remove\" value=\"remove\">");
     print("<input type=\"submit\" name=\"replace\" value=\"replace\">");
@@ -52,6 +57,7 @@
 
 
     ?>
+    <script src="./index.js" ></script>
 </body>
 
 </html>

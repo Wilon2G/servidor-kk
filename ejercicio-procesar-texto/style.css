@@ -33,6 +33,24 @@ ul{
 
     
 }
+
+.widthh{
+    width: 100%;
+}
+
+.poss{
+    position: relative;
+}
+
+.ocultar{
+    background-color:white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 99%;
+    width: 99%;
+}
+
 .resultados{
     background-color: lightblue;
     width: 30%;
