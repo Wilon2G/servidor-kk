@@ -19,3 +19,12 @@ th{
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.diss{
+    display: inline-block;
+    width: 100%;
+}
