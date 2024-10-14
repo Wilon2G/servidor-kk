@@ -19,7 +19,7 @@
     print('<h1>Ejercicio 2</h1>');
     print(calendario_mensual(2024,5));
     print('<h1>Ejercicio 3</h1>');
-    calendario_anual(2001);
+    calendario_anual(2024);
     print("</div>");
     
     ?>
