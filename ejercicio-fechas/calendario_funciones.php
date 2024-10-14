@@ -5,12 +5,16 @@ function calendario_mensual($ano, $mes)
         throw new Exception("Error En el mes introducido", 1);
 
     }
+
+$objcaption= new DateTime(''.$ano.'-'.$mes.'-01',new DateTimeZone('Europe/Madrid'));
+$monthname=ucfirst(IntlDateFormatter::formatObject($objcaption,'MMMM YYYY','es'));
+//date("F-Y", strtotime("1-" . $mes . "-" . $ano))
     $firstday = date("D", strtotime("1-" . $mes . "-" . $ano));
     $res = '';
     $firstday = getfirst($firstday);
-    $res .= '<h1>' . $firstday . '</h1>';
+   // $res .= '<h1>' . $firstday . '</h1>';
     $res .= "<table>";
-    $res .= "<caption>" . date("F-Y", strtotime("1-" . $mes . "-" . $ano)) . "</caption>";
+    $res .= "<caption>" . $monthname . "</caption>";
     $res .= '<thead><tr>';
     $res .= '<th>L</th>';
     $res .= '<th>M</th>';
@@ -23,7 +27,8 @@ function calendario_mensual($ano, $mes)
     $res .= '<tbody>';
     $days = $mes == 2 ? ($ano % 4 ? 28 : ($ano % 100 ? 29 : ($ano % 400 ? 28 : 29))) : (($mes - 1) % 7 % 2 ? 30 : 31);
     $res .= '<tr>';
-    for ($i = 1; $i <= $days; $i++) {
+    
+    for ($i = 1; $i <= $days+$firstday; $i++) {
         if ($i % 7 == 1) {
             $res .= '</tr><tr>';
         }
