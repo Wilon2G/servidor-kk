@@ -16,17 +16,8 @@
     print("<p>Fecha de mañana: ".date('d-m-Y',mktime(0,0,0,date('m',time()),date('d',time())+1,date('y',time())))."</p>");
     print("<p>Hora actual: ".date("G-i-s",time())."</p>");
     print("<p>Fecha del próximo Lunes: ".date("d-m-Y", strtotime("next monday"))."</p>");
-    print('<h1>Ejercicio 2</h1>');
-    print(calendario_mensual(2024,5));
-    print('<h1>Ejercicio 3</h1>');
-    calendario_anual(2024);
-
-    print('<h1>Ejercicio 4</h1>');
-    $meses=array(1,2,3,4,5,6,7,8,9,10,11,12);
-    usarArrWalk($meses);
     print("</div>");
-    
     ?>
-    <a href="./index"><button>Volver</button></a>
+     <a href="./index"><button>Volver</button></a>
 </body>
 </html>
