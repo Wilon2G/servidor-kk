@@ -92,3 +92,12 @@ function getfirst($day)
     }
 
 }
+
+
+
+function usarArrWalk($arr){
+$ano=date("Y");
+array_walk($arr,function($mes)use ($ano){
+    calendario_mensual($ano, $mes);
+});
+}

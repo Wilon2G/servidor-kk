@@ -3,7 +3,7 @@
     margin-left: 50%;
     margin-top: 10%;
     width: 50%;
-    transform: translate(-50%, -20%);
+    transform: translateX(-50%);
     justify-content: left;
     position: relative;
     

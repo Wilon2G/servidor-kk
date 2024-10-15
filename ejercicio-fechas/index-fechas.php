@@ -9,7 +9,7 @@
 <body>
     <?php
     include(__DIR__."/calendario_funciones.php");
-    print("<div class=\"info\"");
+    print("<div class=\"info\">");
     print('<h1>Ejercicio 1</h1>');
     date_default_timezone_set('Europe/Madrid');
     print("<p>Fecha de hoy: ".date("d-m-Y",time())."</p>");
@@ -20,7 +20,10 @@
     print(calendario_mensual(2024,5));
     print('<h1>Ejercicio 3</h1>');
     calendario_anual(2024);
+    
     print('<h1>Ejercicio 4</h1>');
+    $meses=array(1,2,3,4,5,6,7,8,9,10,11,12);
+    usarArrWalk($meses);
     print("</div>");
     
     ?>
