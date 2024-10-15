@@ -97,7 +97,9 @@ function getfirst($day)
 
 function usarArrWalk($arr){
 $ano=date("Y");
+print('<div class="ej4">');
 array_walk($arr,function($mes)use ($ano){
-    calendario_mensual($ano, $mes);
+    print(calendario_mensual($ano, $mes));
 });
+print('</div>');
 }

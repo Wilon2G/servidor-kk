@@ -28,3 +28,11 @@ td{
     display: inline-block;
     width: 100%;
 }
+.ej4{
+    /* float: left;*/
+    width: 100%; 
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    padding: 10%;
+}
