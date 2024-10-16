@@ -8,7 +8,9 @@
 </head>
 <body>
     <div class="opciones">
-        <a href="./ejercicio1/index.php"><h1>Ejercicio1</h1></a>
+        <a href="./ejercicio1/index.php"><h1>Ejercicio 1</h1></a>
+        <a href="./ejercicio2/index.php"><h1>Ejercicio 2</h1></a>
+        <a href="./ejercicio3/index.php"><h1>Ejercicio 3</h1></a>
     </div>
 </body>
 </html>

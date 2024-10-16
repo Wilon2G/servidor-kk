@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Log In</title>
     <link rel="stylesheet" href="style-main.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
     }
 
     if (!isset($_POST['username'])&&!isset($_POST['password'])) {
-        form();
+        form(false);
     }
     else{
         $attempt=strtolower($_POST['username']).':'.$_POST['password'];
@@ -29,9 +29,8 @@
             header("Location: verdatos.php");
         }
         else {
-            print("<h1>Error en el usuario o contraseña</h1>");
-            print("<p>Volverá al formulario en 10 segundos</p>");
-            header("Refresh:10");
+            $username=$_POST['username'];
+            header("Location: error.php?username=$username");
         }
     }
     

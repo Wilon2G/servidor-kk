@@ -29,9 +29,8 @@
             header("Location: verdatos.php");
         }
         else {
-            print("<h1>Error en el usuario o contraseña</h1>");
-            print("<p>Volverá al formulario en 10 segundos</p>");
-            header("Refresh:10");
+            $username=$_POST['username'];
+            header("Location: error.php?username=$username");
         }
     }
     
