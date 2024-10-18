@@ -14,10 +14,8 @@
         <?php
         include(__DIR__ . "/functions.php");
 
-        $file = file_get_contents("./datos.txt");
-        $infousers = array_map('trim', explode("\n", $file));
-        $solousers = array_map('filteruser', $infousers);
-        // $solousers=array_map('trim',$solousers);
+        $file = file_get_contents("./datos.json");
+        $infousers = json_decode($file,true);
         
         // foreach ($solousers as $key => $value) {
         //     print("<p>".$value."</p>");
@@ -26,14 +24,14 @@
         if (!isset($_POST['username']) && !isset($_POST['password'])) {
             form(true);
         } else {
-            $attempt = strtolower($_POST['username']) . ':' . $_POST['password'];
+            
             $userattempt = strtolower($_POST['username']);
-            // $userattempt=trim($userattempt);
-            if (!in_array($userattempt, $solousers)) {
+            $passwordattempt = strtolower($_POST['password']);
+            
+            if (!array_key_exists($userattempt,$infousers)) {
                 print ("<h1>Usuario registrado</h1>");
-                $infousers = array_map(function ($s){ return $s."\n"; }, $infousers);
-                array_push($infousers, $attempt);
-                file_put_contents('datos.txt',$infousers);
+                $infousers[$userattempt]=$passwordattempt;
+                file_put_contents("./datos.json",json_encode($infousers));
                 print("Se te va a redirigir al inicio en 5 segundos");
                 header('Refresh:5 ; URL=index.php');
             }

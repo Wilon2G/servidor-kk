@@ -30,7 +30,7 @@
         }
         else {
             $username=$_POST['username'];
-            header("Location: error.php?username=$username");
+            header("Location: error.php?username=".urlencode($username));
         }
     }
     

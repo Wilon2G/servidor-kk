@@ -18,11 +18,11 @@ function form($bol)
     <br><br>");
     if ($bol) {
         print ("<label>Nombre completo: 
-    <input type=\"text\" name=\"name\" maxlength=\"30\" minlength=\"4\"  >
+    <input type=\"text\" name=\"name\" maxlength=\"30\" minlength=\"1\"  >
     </label>
     <br><br>
     <label>Apellidos: 
-    <input type=\"text\" name=\"surname\" maxlength=\"30\" minlength=\"4\"  >
+    <input type=\"text\" name=\"surname\" maxlength=\"30\" minlength=\"1\"  >
     </label>
     <br><br>
     <label>Teléfono: 
@@ -45,4 +45,11 @@ function filteruser($s)
 {
     $s = explode(":", $s);
     return $s[0];
+}
+
+function checkAttempt($arr,$username, $password){
+
+return array_key_exists($username,$arr)&&$arr[$username]==$password;
+
+
 }
