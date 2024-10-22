@@ -1,0 +1,38 @@
+.opciones{
+    background-color: lightgoldenrodyellow;
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 90%;
+    transform: translate(-50%);
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+body{
+    background-color: bisque;
+}
+img{
+    height: 200px;
+    width: 131px;
+}
+form{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+h1{
+    margin: 5%;
+}
+form{
+    padding: 5%;
+    
+}
+button{
+    padding: 5px;
+    background-color: beige;
+    margin: 10px;
+}
+button:hover{
+    background-color: blanchedalmond;
+    transform: translate(0%,-5%);
+}

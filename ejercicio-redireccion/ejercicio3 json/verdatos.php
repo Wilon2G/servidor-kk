@@ -12,7 +12,7 @@
 <h3>Ahora puede acceder a todos los datos secretos</h3>
 <button id="froggo">Pulse aquí para revelar secretos</button>
 
-
+<!-- <img id="thaFrog" alt="Froggo" src="./media/frog_top_secret.jpg"> -->
     </div>
 
     <script>
@@ -21,9 +21,15 @@
         btn.addEventListener('click',showfrog);
 
         function showfrog(){
+            if (document.getElementById('thaFrog')) {
+                divb.removeChild(getElementById('thaFrog'));
+            }
+            else{
             const frog=document.createElement('img');
             frog.setAttribute('src','./media/frog_top_secret.jpg');
+            frog.setAttribute('id','thaFrog');
             divb.appendChild(frog);
+        }
         }
     </script>
     
