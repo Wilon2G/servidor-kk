@@ -20,8 +20,18 @@
         }
 
         
+        if (isset($_POST['mano'])&&!empty($_POST['mano'])) {
+            if (isset($_POST['sorted'])) {
+                showHand($_POST['mano'],true);
+            }else {
+                showHand($_POST['mano'],false);
+            }
+            
+        }
+        else {
+            showBaraja(isset($_POST['palo'])?$_POST['palo']:null,isset($_POST['num'])?$_POST['num']:null);
+        }
         
-        showBaraja(isset($_POST['palo'])?$_POST['palo']:0,isset($_POST['num'])?$_POST['num']:0);
         
         ?>
     </div>
