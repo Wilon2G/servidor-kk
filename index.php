@@ -35,6 +35,8 @@
             print("<br>");
             print ("<a href=\"http://localhost/SERVIDOR/ejercicio-baraja/index-baraja.php\"><button>Ejercicio Baraja</button></a>");
             print("<br>");
+            print ("<a href=\"http://localhost/SERVIDOR/ejercicio-tabla/index-tabla.php\"><button>Ejercicio Tabla</button></a>");
+            print("<br>");
             print ("<a href=\"http://localhost/SERVIDOR/ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
             // http://localhost/dashboard/
