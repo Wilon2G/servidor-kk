@@ -16,7 +16,7 @@
         form();
         print('<div class="content">');
             if (!empty($_POST['rows'])&&!empty($_POST['cols'])) {
-                genTable($_POST['rows'],$_POST['cols']);
+                genTable($_POST['rows'],$_POST['cols'],isset($_POST['width'])?$_POST['width']:"width:60px;",'height: 60px;','background: pink;','border: 3px dashed blue;');
             }
             print('</div>');
         ?>

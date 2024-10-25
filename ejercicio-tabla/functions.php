@@ -8,6 +8,19 @@ function form(){
     <label>Columnas: 
     <input type=\"number\" name=\"cols\">
     </label>
+    <label>Alto (px): 
+    <input type=\"number\" name=\"height\">
+    </label>
+    <label>Ancho (px): 
+    <input type=\"number\" name=\"width\">
+    </label>
+    <label>Color de fondo: 
+    <input type=\"text\" name=\"color\">
+    </label>
+    <label>Borde, grosor(px), estilo, color: 
+    <input type=\"text\" name=\"border\">
+    </label>
+    
 
     
     ");
@@ -16,7 +29,14 @@ function form(){
 
 
 function genTable($rows,$cols){
-    print('<table><tbody>');
+    // print("<p> Argumentos (4debugging): ".func_num_args()."</p>"); //Para hacer debugging
+
+
+    print('<table style="');
+    for ($i=2; $i < func_num_args(); $i++) { 
+        print(' '.func_get_arg($i).' ');
+    }
+    print('"><tbody>');
     for ($i=0; $i < $rows; $i++) { 
         print('<tr>');
         for ($j=0; $j < $cols; $j++) { 
