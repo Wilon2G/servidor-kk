@@ -37,6 +37,10 @@
             print("<br>");
             print ("<a href=\"http://localhost/SERVIDOR/ejercicio-tabla/index-tabla.php\"><button>Ejercicio Tabla</button></a>");
             print("<br>");
+            print ("<a href=\"http://localhost/SERVIDOR/ejercicio-cookies/index-cookies.php\"><button>Ejercicio Cookies</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost/SERVIDOR/ejercicio-cookies-curri/\"><button>Ejercicio Cookies-curri</button></a>");
+            print("<br>");
             print ("<a href=\"http://localhost/SERVIDOR/ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
             // http://localhost/dashboard/

@@ -3,10 +3,10 @@ function form(){
     print ("
     <form action=\"" . $_SERVER['PHP_SELF'] . "\" method=\"POST\">
     <label>Filas: 
-    <input type=\"number\" name=\"rows\">
+    <input type=\"number\" name=\"rows\" value=3>
     </label>
     <label>Columnas: 
-    <input type=\"number\" name=\"cols\">
+    <input type=\"number\" name=\"cols\" value=3>
     </label>
     <label>Alto (px): 
     <input type=\"number\" name=\"height\">
@@ -49,7 +49,40 @@ function genTable($rows,$cols){
 
 }
 
+function checkInputs(){
+$arr=[];
 
+if (!empty($_POST['width'])) {
+    array_push($arr,"width:".$_POST['width']."px;");
+}
+else{
+    array_push($arr,"width:60px;");
+}
+
+if (!empty($_POST['height'])) {
+    array_push($arr,"height:".$_POST['height']."px;");
+}
+else{
+    array_push($arr,"height:60px;");
+}
+
+if (!empty($_POST['color'])) {
+    array_push($arr,"background:".$_POST['color'].";");
+}
+else{
+    array_push($arr,"background:pink;");
+}
+
+if (!empty($_POST['border'])) {
+    array_push($arr,"border:".$_POST['border'].";");
+}
+else{
+    array_push($arr,"border: 3px dashed blue;");
+}
+
+return $arr;
+
+}
 
 
 

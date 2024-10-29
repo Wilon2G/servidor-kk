@@ -1,0 +1,54 @@
+{
+    
+        "es":{
+            "name":"Nombre:",
+            "surname":"Apellidos:",
+            "email":"Correo Electrónico:",
+            "tlf":"Teléfono:",
+            "sports":"Deportes:",
+            "subSports":{
+                "tennis":"tenis",
+                "soccer":"Fútbol",
+                "cycling":"Ciclismo",
+                "swimming":"Natación"
+
+            },
+            "nac":"Nacionalidad:",
+            "subNac":{
+                "spanish":"Español",
+                "english":"Inglés",
+                "german":"Alemán",
+                "french":"Francés"
+            },
+            "lang":"Idiomas:",
+            "englvl":"Nivel de Inglés:",
+            "sex":"Sexo:",
+            "birthdate":"Fecha de Nacimiento:"
+        },
+        "en":{
+            "name":"Name:",
+            "surname":"Surnames:",
+            "email":"Email:",
+            "tlf":"Phone number:",
+            "sports":"Sports:",
+            "subSports":{
+                "tennis":"tennis",
+                "soccer":"Soccer",
+                "cycling":"Cycling",
+                "swimming":"Swimming"
+
+            },
+            "nac":"Nationality:",
+            "subNac":{
+                "spanish":"Spanish",
+                "english":"English",
+                "german":"German",
+                "french":"French"
+            },
+            "lang":"Languajes:",
+            "englvl":"English Level:",
+            "sex":"Sex:",
+            "birthdate":"Birth Date:"
+        }
+    
+}

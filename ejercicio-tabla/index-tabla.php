@@ -14,9 +14,13 @@
         <?php
         include('./functions.php');
         form();
+
+        $data=checkInputs();
+
         print('<div class="content">');
             if (!empty($_POST['rows'])&&!empty($_POST['cols'])) {
-                genTable($_POST['rows'],$_POST['cols'],isset($_POST['width'])?$_POST['width']:"width:60px;",'height: 60px;','background: pink;','border: 3px dashed blue;');
+                genTable($_POST['rows'],$_POST['cols'],$data[0],$data[1],$data[2],$data[3]);
+                print('<p>'.$_POST['width'].'</p>');
             }
             print('</div>');
         ?>
@@ -25,3 +29,17 @@
 </body>
 
 </html>
+
+
+
+<!-- 
+
+!empty($_POST['width'])?$_POST['width']:"width:60px;"
+ 
+'height: 60px;'
+
+'background: pink;'
+
+'border: 3px dashed blue;'
+
+-->
