@@ -21,9 +21,21 @@
                 "french":"Francés"
             },
             "lang":"Idiomas:",
+            "subLang":{
+                "spanish":"Español",
+                "english":"Inglés",
+                "german":"Alemán",
+                "french":"Francés"
+            },
             "englvl":"Nivel de Inglés:",
             "sex":"Sexo:",
-            "birthdate":"Fecha de Nacimiento:"
+            "subSex":{
+                "male":"H",
+                "female":"M",
+                "NAN":"Prefiero No Decirlo"
+            },
+            "birthdate":"Fecha de Nacimiento:",
+            "genn":"Generar CV"
         },
         "en":{
             "name":"Name:",
@@ -46,9 +58,21 @@
                 "french":"French"
             },
             "lang":"Languajes:",
+            "subLang":{
+                "spanish":"Spanish",
+                "english":"English",
+                "german":"German",
+                "french":"French"
+            },
             "englvl":"English Level:",
             "sex":"Sex:",
-            "birthdate":"Birth Date:"
+            "subSex":{
+                "male":"M",
+                "female":"F",
+                "NAN":"NAN"
+            },
+            "birthdate":"Birth Date:",
+            "genn":"Build CV"
         }
     
 }

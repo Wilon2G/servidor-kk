@@ -1,6 +1,6 @@
 <?php
-function printForm($arr){
-    print ("<div class=\"mainDetails\"><form  action=\"".$_SERVER['PHP_SELF']."\" method=\"POST\">");
+function printForm($arr,$backColor){
+    print ("<div class=\"mainDetails\" style=\"background-color:".$backColor."\";><form  action=\"".$_SERVER['PHP_SELF']."\" method=\"POST\">");
 
     print("
         <label>".$arr['name']."</label>
@@ -37,7 +37,7 @@ function printForm($arr){
          <label>".$arr['lang']."</label>
          <br>
          <select name=\"idioma[]\" multiple>");
-         $languajes=["Español","Inglés","Alemán","Francés"];
+         $languajes=[$arr['subNac']["spanish"],$arr['subNac']["english"],$arr['subNac']["german"],$arr['subNac']["french"]];
          foreach($languajes as $lang){
           print(" <option value=\"Inglés\">".$lang."</option>");
          }
@@ -67,15 +67,15 @@ function printForm($arr){
          <br>");
          print("
          <label>".$arr['sex']."</label>
-         <input type=\"radio\" value=\"M\" name=\"sexo\">M</input>
-         <input type=\"radio\" value=\"H\" name=\"sexo\">H</input>
-         <input type=\"radio\" value=\"---\" name=\"sexo\">Prefiero no decirlo</input>
+         <input type=\"radio\" value=\"M\" name=\"sexo\">".$arr['subSex']['female']."</input>
+         <input type=\"radio\" value=\"H\" name=\"sexo\">".$arr['subSex']['male']."</input>
+         <input type=\"radio\" value=\"---\" name=\"sexo\">".$arr['subSex']['NAN']."</input>
          <br><br>
          <label>".$arr['birthdate']."</label>
          <input type=\"date\" value=\"\" name=\"fechan\" max=\"".date('Y-m-d')."\">
          <br><br>
          
-         <input type=\"submit\" name=\"submit\" value=\"Generar cv\">
+         <input type=\"submit\" name=\"submit\" value=\"".$arr['genn']."\">
          </form></div>");
 }
 
@@ -202,7 +202,10 @@ function languajeForm(){
   print ("<div class=\"mainDetails\"><form  action=\"".$_SERVER['PHP_SELF']."\" method=\"POST\">");
   print('<label>Languaje:</label>');
   print('<input type="radio" name="languaje" value="es">Spanish</input>');
-  print('<input type="radio" name="languaje" value="en">English</input>');
+  print('<input type="radio" name="languaje" value="en">English</input><br><br>');
+  print('<label>Color de fondo:</label>');
+  print('<input type="radio" name="backColor" value="lightGrey">Gris</input>');
+  print('<input type="radio" name="backColor" value="lightYellow">Amarillo</input><br><br>');
   print('<input type="submit" name="submitlang" value="confirm"></form>');
   // print('<a href="#"><button>Refresh</button> </a>');
 
@@ -212,11 +215,216 @@ print("</div>");
 }
 
 
-function checkCookies(){
-if (isset($_POST['languaje'])) {
- setcookie("languaje",$_POST['languaje']);
+function addCookies(){
+  if (isset($_POST['languaje'])&&isset($_POST['backColor'])) {
+    setcookie("languaje",$_POST['languaje']);
+    setcookie("backColor",$_POST['backColor']);
+    header("refresh:0");
+    
+   }
 }
+
+function showCurriForm($cookiesLang,$cookiesColor){
+  if (isset($_POST["submit"])) {
+    if (!checkInputs()) {
+
+      printBody();
+    } else {
+      print ("<h1 class=\"mainDetails\">Error, por favor rellene todos los datos</h1>");
+      printForm($cookiesLang, $cookiesColor);
+    }
+
+  } else {
+    printForm($cookiesLang, $cookiesColor);
+  }
+
+
+
 }
+
+
+// {
+//   "es": {
+//       "name": "Nombre:",
+//       "surname": "Apellidos:",
+//       "email": "Correo Electrónico:",
+//       "tlf": "Teléfono:",
+//       "sports": "Deportes:",
+//       "subSports": {
+//           "tennis": "tenis",
+//           "soccer": "Fútbol",
+//           "cycling": "Ciclismo",
+//           "swimming": "Natación"
+//       },
+//       "nac": "Nacionalidad:",
+//       "subNac": {
+//           "spanish": "Español",
+//           "english": "Inglés",
+//           "german": "Alemán",
+//           "french": "Francés"
+//       },
+//       "lang": "Idiomas:",
+//       "subLang": {
+//           "spanish": "Español",
+//           "english": "Inglés",
+//           "german": "Alemán",
+//           "french": "Francés"
+//       },
+//       "englvl": "Nivel de Inglés:",
+//       "sex": "Sexo:",
+//       "subSex": {
+//           "male": "H",
+//           "female": "M",
+//           "NAN": "Prefiero No Decirlo"
+//       },
+//       "birthdate": "Fecha de Nacimiento:",
+//       "genn": "Generar CV"
+//   },
+//   "en": {
+//       "name": "Name:",
+//       "surname": "Surnames:",
+//       "email": "Email:",
+//       "tlf": "Phone number:",
+//       "sports": "Sports:",
+//       "subSports": {
+//           "tennis": "tennis",
+//           "soccer": "Soccer",
+//           "cycling": "Cycling",
+//           "swimming": "Swimming"
+//       },
+//       "nac": "Nationality:",
+//       "subNac": {
+//           "spanish": "Spanish",
+//           "english": "English",
+//           "german": "German",
+//           "french": "French"
+//       },
+//       "lang": "Languages:",
+//       "subLang": {
+//           "spanish": "Spanish",
+//           "english": "English",
+//           "german": "German",
+//           "french": "French"
+//       },
+//       "englvl": "English Level:",
+//       "sex": "Sex:",
+//       "subSex": {
+//           "male": "M",
+//           "female": "F",
+//           "NAN": "NAN"
+//       },
+//       "birthdate": "Birth Date:",
+//       "genn": "Build CV"
+//   },
+//   "fr": {
+//       "name": "Nom:",
+//       "surname": "Prénoms:",
+//       "email": "Email:",
+//       "tlf": "Numéro de téléphone:",
+//       "sports": "Sports:",
+//       "subSports": {
+//           "tennis": "tennis",
+//           "soccer": "Football",
+//           "cycling": "Cyclisme",
+//           "swimming": "Natation"
+//       },
+//       "nac": "Nationalité:",
+//       "subNac": {
+//           "spanish": "Espagnol",
+//           "english": "Anglais",
+//           "german": "Allemand",
+//           "french": "Français"
+//       },
+//       "lang": "Langues:",
+//       "subLang": {
+//           "spanish": "Espagnol",
+//           "english": "Anglais",
+//           "german": "Allemand",
+//           "french": "Français"
+//       },
+//       "englvl": "Niveau d'anglais:",
+//       "sex": "Sexe:",
+//       "subSex": {
+//           "male": "H",
+//           "female": "F",
+//           "NAN": "Préférer ne pas dire"
+//       },
+//       "birthdate": "Date de naissance:",
+//       "genn": "Générer CV"
+//   },
+//   "de": {
+//       "name": "Name:",
+//       "surname": "Nachnamen:",
+//       "email": "E-Mail:",
+//       "tlf": "Telefonnummer:",
+//       "sports": "Sportarten:",
+//       "subSports": {
+//           "tennis": "Tennis",
+//           "soccer": "Fußball",
+//           "cycling": "Radfahren",
+//           "swimming": "Schwimmen"
+//       },
+//       "nac": "Nationalität:",
+//       "subNac": {
+//           "spanish": "Spanisch",
+//           "english": "Englisch",
+//           "german": "Deutsch",
+//           "french": "Französisch"
+//       },
+//       "lang": "Sprachen:",
+//       "subLang": {
+//           "spanish": "Spanisch",
+//           "english": "Englisch",
+//           "german": "Deutsch",
+//           "french": "Französisch"
+//       },
+//       "englvl": "Englisch Niveau:",
+//       "sex": "Geschlecht:",
+//       "subSex": {
+//           "male": "M",
+//           "female": "W",
+//           "NAN": "Bevorzugen Sie es nicht zu sagen"
+//       },
+//       "birthdate": "Geburtsdatum:",
+//       "genn": "Lebenslauf erstellen"
+//   },
+//   "zh": {
+//       "name": "姓名:",
+//       "surname": "姓氏:",
+//       "email": "电子邮件:",
+//       "tlf": "电话号码:",
+//       "sports": "运动:",
+//       "subSports": {
+//           "tennis": "网球",
+//           "soccer": "足球",
+//           "cycling": "骑自行车",
+//           "swimming": "游泳"
+//       },
+//       "nac": "国籍:",
+//       "subNac": {
+//           "spanish": "西班牙语",
+//           "english": "英语",
+//           "german": "德语",
+//           "french": "法语"
+//       },
+//       "lang": "语言:",
+//       "subLang": {
+//           "spanish": "西班牙语",
+//           "english": "英语",
+//           "german": "德语",
+//           "french": "法语"
+//       },
+//       "englvl": "英语水平:",
+//       "sex": "性别:",
+//       "subSex": {
+//           "male": "男",
+//           "female": "女",
+//           "NAN": "更愿意不说"
+//       },
+//       "birthdate": "出生日期:",
+//       "genn": "生成简历"
+//   }
+// }
 
 
 

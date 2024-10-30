@@ -26,47 +26,25 @@
   <?php
 
 
-
-if (isset($_POST['languaje'])) {
-  setcookie("languaje",$_POST['languaje']);
-  header("refresh:0");
-  
- }
+  addCookies();
 
 
-  if (!isset($_COOKIE['languaje'])) {
+  if (!isset($_COOKIE['languaje']) && !isset($_COOKIE['backColor'])) {
     languajeForm();
-    
-  } 
-  else {
+
+  } else {
 
     $file = file_get_contents("./languajes.json");
-    $languajes = json_decode($file,true);
-
-    print("<div class=\"mainDetails\">");
-    print('<h1>Debuggin</h1>');
-    var_dump($languajes[$_COOKIE['languaje']]);
-    print('</div>');
+    $languajes = json_decode($file, true);
 
 
-    if (isset($_POST["submit"])) {
-      if (!checkInputs()) {
+    showCurriForm($languajes[$_COOKIE['languaje']], $_COOKIE['backColor']);
 
-        printBody();
-      } else {
-        print ("<h1 class=\"mainDetails\">Error, por favor rellene todos los datos</h1>");
-        printForm($languajes[$_COOKIE['languaje']]);
-      }
-
-    } else {
-
-      printForm($languajes[$_COOKIE['languaje']]);
-    }
-
+    
 
   }
 
-  
+
 
 
 
@@ -74,3 +52,21 @@ if (isset($_POST['languaje'])) {
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- print("<div class=\"mainDetails\">");
+    print('<h1>Debuggin</h1>');
+    var_dump($languajes[$_COOKIE['languaje']]);
+    print('</div>'); -->
