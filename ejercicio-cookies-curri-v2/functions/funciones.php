@@ -195,7 +195,7 @@ function printBody(){
 
 }
 
-
+//Deprecated in this version (v2)
 function languajeForm(){
   print("<div class=\"mainDetails\">");
   print('<h1>Seleccione sus ajustes:</h1>');
@@ -223,8 +223,9 @@ function checkAddCookies(){
     setcookie("languaje",$_POST['languaje']);
     setcookie("backColor",$_POST['backColor']);
     header("refresh:0");
-    
+    return true;
    }
+   return false;
 }
 
 function showCurriForm($cookiesLang,$cookiesColor){
@@ -245,23 +246,7 @@ function showCurriForm($cookiesLang,$cookiesColor){
 
 }
 
-function deleteCookiesButton(){
 
-  print("<form  action=\"".$_SERVER['PHP_SELF']."\" method=\"POST\">");
-  print('<input type="submit" name="deleteCookies" value="Eliminar Cookies"></form>');
-
-}
-
-
-function checkDelCookies(){
-if(isset($_POST['deleteCookies'])&&isset($_COOKIE['languaje']) && isset($_COOKIE['backColor'])){
-  setcookie("languaje","",-1);
-  setcookie("backColor","",-1);
-  header("refresh:0");
-}
-
-
-}
 
 
 // {

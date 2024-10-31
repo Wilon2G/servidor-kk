@@ -23,34 +23,26 @@
 </head>
 
 <body>
+  <div class="mainDetails">
   <?php
 
-
-  checkAddCookies();
-
-  checkDelCookies();
-
-  if (!isset($_COOKIE['languaje']) && !isset($_COOKIE['backColor'])) {
-    languajeForm();
-    
-
-  } else {
-
-    $file = file_get_contents("./languajes.json");
-    $languajes = json_decode($file, true);
-
-    print("<div class=\"mainDetails\">");
-    deleteCookiesButton();
-    print('</div>'); 
+checkAddCookies();
 
 
-    
-    showCurriForm($languajes[$_COOKIE['languaje']], $_COOKIE['backColor']);
 
-  }
+if (!isset($_COOKIE['languaje']) && !isset($_COOKIE['backColor'])&&!checkAddCookies()) {
+  
+  header("Location: ./languajeForm.php");
+}
+
+if (isset($_COOKIE['languaje']) && isset($_COOKIE['backColor'])) {
+  header("Location: ./curriForm.php");
+}
 
 
   ?>
+
+</div>
 </body>
 
 </html>
