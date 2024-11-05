@@ -1,24 +1,37 @@
 <?php
-function printForm($arr,$backColor){
-    print ("<div class=\"mainDetails\" style=\"background-color:".$backColor."\";><form  action=\"".$_SERVER['PHP_SELF']."\" method=\"POST\">");
+function printForm($arr,$backColor,$style,$values){
+    print ("<div class=\"mainDetails\" style=\"background-color:".$backColor."\";><form  action=\"./comprobar.php\" method=\"POST\">");
+
+    if (is_null($style)) {
+      $style="";
+    }
+
+    if (is_null($values)) {
+      $values=defaultValues();
+    }
+
 
     print("
         <label>".$arr['name']."</label>
-         <input type=\"text\" name=\"nombre\" maxlength=\"30\" minlength=\"1\" required >
+         <input type=\"text\" name=\"nombre\" maxlength=\"30\" minlength=\"1\" value=\"".$values["nombre"]."\" required >
          <br><br>
          <label>".$arr['surname']."</label>
-         <input type=\"text\" name=\"apellidos\" maxlength=\"30\" minlength=\"1\" required >
+         <input type=\"text\" name=\"apellidos\" maxlength=\"30\" minlength=\"1\"  value=\"".$values["apellidos"]."\" required >
+         <br><br>
+         <label>".$arr['id']."</label>
+         <input type=\"text\" name=\"id\" maxlength=\"9\" minlength=\"9\" value=\"".$values["id"]."\" required >
          <br><br>
           <label>".$arr['email']."</label>
-         <input type=\"email\" name=\"correo\" maxlength=\"30\" minlength=\"1\" required >
+         <input type=\"email\" name=\"correo\" maxlength=\"30\" minlength=\"1\"   value=\"".$values["correo"]."\"  required >
          <br><br>
          <label>".$arr['tlf']."</label>
-         <input type=\"tel\" name=\"tlfn\" maxlength=\"30\" minlength=\"1\" required >
+         <input type=\"tel\" name=\"tlfn\" maxlength=\"30\" minlength=\"1\"    value=\"".$values["tlfn"]."\"    required >
          <br><br>");
          $sports=[$arr['subSports']["tennis"],$arr['subSports']["soccer"],$arr['subSports']["cycling"],$arr['subSports']["swimming"]];
          print("<label>".$arr['sports']."</label>");
+         
          foreach($sports as $sport){
-          print("<input type=\"checkbox\" value=\"".$sport."\" name=\"deporte[]\" >".$sport."</input>");
+          print("<input type=\"checkbox\" value=\"".$sport."\" name=\"deporte[]\"  ".( in_array($sport,$values["deporte"])? "checked" : "" ).">".$sport."</input>");
          }
          print("
          <br><br>");
@@ -27,7 +40,7 @@ function printForm($arr,$backColor){
          <select name=\"nacionalidad\">");
          $nacionalities=[$arr['subNac']["spanish"],$arr['subNac']["english"],$arr['subNac']["german"],$arr['subNac']["french"]];
          foreach($nacionalities as $nac){
-          print(" <option value=\"".$nac."\">".$nac."</option>");
+          print(" <option value=\"".$nac."\"  ".( $nac==$values["nac"]? "selected" : "" )."  >".$nac."</option>");
          }
         print("</select>");
          
@@ -39,7 +52,7 @@ function printForm($arr,$backColor){
          <select name=\"idioma[]\" multiple>");
          $languajes=[$arr['subNac']["spanish"],$arr['subNac']["english"],$arr['subNac']["german"],$arr['subNac']["french"]];
          foreach($languajes as $lang){
-          print(" <option value=\"Inglés\">".$lang."</option>");
+          print(" <option value=\"".$lang."\"   ".( in_array($lang,$values["idioma"])? "selected" : "" )."  >".$lang."</option>");                                                           //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
          }
         print("</select>");
         
@@ -48,8 +61,8 @@ function printForm($arr,$backColor){
          print("
         <label>".$arr['englvl']."</label><br>
          <input id=\"nvl\" type=\"range\" name=\"nvling\"
-         min=\"0\" max=\"100\" value=\"0\">
-         <p id=\"nivel\">0</p>
+         min=\"0\" max=\"100\" value=\"".$values["nvling"]."\">
+         <p id=\"nivel\">".$values["nvling"]."</p>
          <script>
       addEventListener('load',inicio,false);
     
@@ -67,16 +80,21 @@ function printForm($arr,$backColor){
          <br>");
          print("
          <label>".$arr['sex']."</label>
-         <input type=\"radio\" value=\"M\" name=\"sexo\">".$arr['subSex']['female']."</input>
-         <input type=\"radio\" value=\"H\" name=\"sexo\">".$arr['subSex']['male']."</input>
-         <input type=\"radio\" value=\"---\" name=\"sexo\">".$arr['subSex']['NAN']."</input>
+         <input type=\"radio\" value=\"M\" name=\"sexo\" ". ( $values["sexo"]=="M"? "checked" : "" ) ." >".$arr['subSex']['female']."</input>
+         <input type=\"radio\" value=\"H\" name=\"sexo\"    ". ( $values["sexo"]=="H"? "checked" : "" ) ."  >".$arr['subSex']['male']."</input>
+         <input type=\"radio\" value=\"---\" name=\"sexo\"  ". ( $values["sexo"]=="---"? "checked" : "" ) ."  >".$arr['subSex']['NAN']."</input>
          <br><br>
          <label>".$arr['birthdate']."</label>
-         <input type=\"date\" value=\"\" name=\"fechan\" max=\"".date('Y-m-d')."\">
+         <input type=\"date\" value=\"\" name=\"fechan\" max=\"".date('Y-m-d')."\" value=\"".$values["fechan"]."\">
          <br><br>
          
          <input type=\"submit\" name=\"submit\" value=\"".$arr['genn']."\">
          </form></div>");
+}
+
+
+function defaultValues(){
+return ["nombre"=>"","apellidos"=>"","id"=>"","correo"=>"","tlfn"=>"","deporte"=>[],"nac"=>"","idioma"=>[],"nvling"=>0,"sexo"=>"","fechan"=>date('Y-m-d')];
 }
 
 
@@ -246,3 +264,7 @@ function showCurriForm($cookiesLang,$cookiesColor){
 
 }
 
+
+function checkId($id){
+  return false;
+}

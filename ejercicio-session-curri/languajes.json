@@ -1,0 +1,187 @@
+{
+    "es": {
+        "name": "Nombre:",
+        "surname": "Apellidos:",
+        "id":"DNI:",
+        "email": "Correo Electrónico:",
+        "tlf": "Teléfono:",
+        "sports": "Deportes:",
+        "subSports": {
+            "tennis": "tenis",
+            "soccer": "Fútbol",
+            "cycling": "Ciclismo",
+            "swimming": "Natación"
+        },
+        "nac": "Nacionalidad:",
+        "subNac": {
+            "spanish": "Español",
+            "english": "Inglés",
+            "german": "Alemán",
+            "french": "Francés"
+        },
+        "lang": "Idiomas:",
+        "subLang": {
+            "spanish": "Español",
+            "english": "Inglés",
+            "german": "Alemán",
+            "french": "Francés"
+        },
+        "englvl": "Nivel de Inglés:",
+        "sex": "Sexo:",
+        "subSex": {
+            "male": "H",
+            "female": "M",
+            "NAN": "Prefiero No Decirlo"
+        },
+        "birthdate": "Fecha de Nacimiento:",
+        "genn": "Generar CV"
+    },
+    "en": {
+        "name": "Name:",
+        "surname": "Surnames:",
+        "id":"ID:",
+        "email": "Email:",
+        "tlf": "Phone number:",
+        "sports": "Sports:",
+        "subSports": {
+            "tennis": "tennis",
+            "soccer": "Soccer",
+            "cycling": "Cycling",
+            "swimming": "Swimming"
+        },
+        "nac": "Nationality:",
+        "subNac": {
+            "spanish": "Spanish",
+            "english": "English",
+            "german": "German",
+            "french": "French"
+        },
+        "lang": "Languages:",
+        "subLang": {
+            "spanish": "Spanish",
+            "english": "English",
+            "german": "German",
+            "french": "French"
+        },
+        "englvl": "English Level:",
+        "sex": "Sex:",
+        "subSex": {
+            "male": "M",
+            "female": "F",
+            "NAN": "NAN"
+        },
+        "birthdate": "Birth Date:",
+        "genn": "Build CV"
+    },
+    "fr": {
+        "name": "Nom:",
+        "surname": "Prénoms:",
+        "id":"ID:",
+        "email": "Email:",
+        "tlf": "Numéro de téléphone:",
+        "sports": "Sports:",
+        "subSports": {
+            "tennis": "tennis",
+            "soccer": "Football",
+            "cycling": "Cyclisme",
+            "swimming": "Natation"
+        },
+        "nac": "Nationalité:",
+        "subNac": {
+            "spanish": "Espagnol",
+            "english": "Anglais",
+            "german": "Allemand",
+            "french": "Français"
+        },
+        "lang": "Langues:",
+        "subLang": {
+            "spanish": "Espagnol",
+            "english": "Anglais",
+            "german": "Allemand",
+            "french": "Français"
+        },
+        "englvl": "Niveau d'anglais:",
+        "sex": "Sexe:",
+        "subSex": {
+            "male": "H",
+            "female": "F",
+            "NAN": "Préférer ne pas dire"
+        },
+        "birthdate": "Date de naissance:",
+        "genn": "Générer CV"
+    },
+    "de": {
+        "name": "Name:",
+        "surname": "Nachnamen:",
+        "id":"ID:",
+        "email": "E-Mail:",
+        "tlf": "Telefonnummer:",
+        "sports": "Sportarten:",
+        "subSports": {
+            "tennis": "Tennis",
+            "soccer": "Fußball",
+            "cycling": "Radfahren",
+            "swimming": "Schwimmen"
+        },
+        "nac": "Nationalität:",
+        "subNac": {
+            "spanish": "Spanisch",
+            "english": "Englisch",
+            "german": "Deutsch",
+            "french": "Französisch"
+        },
+        "lang": "Sprachen:",
+        "subLang": {
+            "spanish": "Spanisch",
+            "english": "Englisch",
+            "german": "Deutsch",
+            "french": "Französisch"
+        },
+        "englvl": "Englisch Niveau:",
+        "sex": "Geschlecht:",
+        "subSex": {
+            "male": "M",
+            "female": "W",
+            "NAN": "Bevorzugen Sie es nicht zu sagen"
+        },
+        "birthdate": "Geburtsdatum:",
+        "genn": "Lebenslauf erstellen"
+    },
+    "zh": {
+        "name": "姓名:",
+        "surname": "姓氏:",
+        "id":"ID:",
+        "email": "电子邮件:",
+        "tlf": "电话号码:",
+        "sports": "运动:",
+        "subSports": {
+            "tennis": "网球",
+            "soccer": "足球",
+            "cycling": "骑自行车",
+            "swimming": "游泳"
+        },
+        "nac": "国籍:",
+        "subNac": {
+            "spanish": "西班牙语",
+            "english": "英语",
+            "german": "德语",
+            "french": "法语"
+        },
+        "lang": "语言:",
+        "subLang": {
+            "spanish": "西班牙语",
+            "english": "英语",
+            "german": "德语",
+            "french": "法语"
+        },
+        "englvl": "英语水平:",
+        "sex": "性别:",
+        "subSex": {
+            "male": "男",
+            "female": "女",
+            "NAN": "更愿意不说"
+        },
+        "birthdate": "出生日期:",
+        "genn": "生成简历"
+    }
+}

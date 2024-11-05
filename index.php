@@ -43,6 +43,8 @@
             print("<br>");
             print ("<a href=\"http://localhost/SERVIDOR/ejercicio-cookies-curri-v2/\"><button>Ejercicio Cookies-curri V2</button></a>");
             print("<br>");
+            print ("<a href=\"http://localhost/SERVIDOR/ejercicio-session-curri/\"><button>Ejercicio Session-curri </button></a>");
+            print("<br>");
             print ("<a href=\"http://localhost/SERVIDOR/ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
             // http://localhost/dashboard/

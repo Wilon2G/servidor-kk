@@ -1,0 +1,52 @@
+.opciones{
+    background-color: lightgoldenrodyellow;
+    margin-left: 50%;
+    
+    width: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    margin-top: 20%;
+}
+body{
+    background-color: bisque;
+}
+h1{
+    margin: 5%;
+}
+form{
+    padding: 5%;
+    
+}
+button{
+    padding: 5px;
+    background-color: beige;
+    margin: 10px;
+}
+button:hover{
+    background-color: blanchedalmond;
+    transform: translate(0%,-5%);
+}
+ul{
+    /* list-style: none; */
+    text-align: left;
+
+    
+}
+.error{
+    background-color: aliceblue;
+    color: aliceblue;
+}
+.resultados{
+    background-color: lightblue;
+    width: 30%;
+    position: relative;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    
+}
+input[type="submit"]{
+    width: 100px;
+    height: 60px;
+}
+

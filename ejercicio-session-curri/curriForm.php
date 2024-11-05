@@ -21,19 +21,69 @@
 </head>
 
 
+
+
+
 <body>
     <?php
+
+
+
     if (!isset($_COOKIE['languaje']) && !isset($_COOKIE['backColor'])) {
         header("Location: ./languajeForm.php");
       }
     ?>
+
+
     <div class="mainDetails">
 <a href="./languajeForm"><button>Change languaje</button></a>
 
 <?php
 $file = file_get_contents("./languajes.json");
 $languajes = json_decode($file, true);
-showCurriForm($languajes[$_COOKIE['languaje']], $_COOKIE['backColor']);
+
+if (isset($_COOKIE["FormData"])) {
+  session_name("FormData");
+  session_start();
+
+  $values=$_SESSION;
+  $style=null;
+
+  print("<p>existe</p>");
+}
+else {
+  $style=null;
+  $values=null;
+}
+
+
+printForm($languajes[$_COOKIE['languaje']], $_COOKIE['backColor'],$style,$values);
+
+
+
+var_dump($_COOKIE);
+
+
+
+
+
+
+
+// if (isset($_POST["submit"])) {
+//   if (!checkInputs()) {
+
+//     printBody();
+//   } else {
+//     print ("<h1 class=\"mainDetails\">Error, por favor rellene todos los datos</h1>");
+//     printForm($cookiesLang, $cookiesColor);
+//   }
+
+// } else {
+//   printForm($cookiesLang, $cookiesColor);
+// }
+
+
+// showCurriForm($languajes[$_COOKIE['languaje']], $_COOKIE['backColor']);
 
 ?>
 
