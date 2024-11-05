@@ -10,7 +10,8 @@ $_SESSION=$_POST;
 $id=$_SESSION["id"];
 
 if (checkId($id)) {
-    print("<h1>kk<h1>");
+    // print("<h1>kk<h1>");
+    printBody();
 }
 else {
     $_SESSION["id"]="";
@@ -18,7 +19,7 @@ else {
 }
 
 
-var_dump($dni);
+// var_dump($dni);
 
 
 
