@@ -246,29 +246,33 @@ function checkAddCookies(){
    return false;
 }
 
-function showCurriForm($cookiesLang,$cookiesColor){
-  if (isset($_POST["submit"])) {
-    if (!checkInputs()) {
+// function showCurriForm($cookiesLang,$cookiesColor){
+//   if (isset($_POST["submit"])) {
+//     if (!checkInputs()) {
 
-      printBody();
-    } else {
-      print ("<h1 class=\"mainDetails\">Error, por favor rellene todos los datos</h1>");
-      printForm($cookiesLang, $cookiesColor);
-    }
+//       printBody();
+//     } else {
+//       print ("<h1 class=\"mainDetails\">Error, por favor rellene todos los datos</h1>");
+//       printForm($cookiesLang, $cookiesColor);
+//     }
 
-  } else {
-    printForm($cookiesLang, $cookiesColor);
-  }
+//   } else {
+//     printForm($cookiesLang, $cookiesColor);
+//   }
 
 
 
-}
+// }
 
 
 
   function checkId($dni){
     $letter = substr($dni, -1);
     $numbers = substr($dni, 0, -1);
+
+    if ( !is_numeric($numbers)) {
+      return false;
+    }
   
     if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numbers%23, 1) == $letter && strlen($letter) == 1 && strlen ($numbers) == 8 ){
       return true;
