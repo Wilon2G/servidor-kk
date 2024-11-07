@@ -37,7 +37,8 @@ if (isset($_COOKIE["FormData"])) {
   session_start();
 
   $values=$_SESSION;
-  $style=null;
+ 
+  $style=$_SESSION["style"];
 
   print("<p>existe</p>");
 }

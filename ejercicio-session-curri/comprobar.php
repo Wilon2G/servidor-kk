@@ -5,27 +5,42 @@ session_name("FormData");
 session_start();
 
 
+$vars=["nombre","apellidos","id","correo","tlfn","deporte","nacionalidad","idioma","nvling","sexo","fechan"];
 
 
 
-$_SESSION=$_POST;
 
-if (!isset($_POST["deporte"])) {
-    $_SESSION["deporte"]="error";
+
+for ($i=0; $i < sizeof($vars); $i++) { 
+    $_SESSION[$vars[$i]]=checkInput($vars[$i]);
 }
-
-checkInputs();
-
 
 $id=$_SESSION["id"];
 
-if (checkId($id)) {
+if (!checkId($id)) {
+    $_SESSION["id"]="";
+}
+
+$errors=[];
+
+for ($i=0; $i < sizeof($vars); $i++) { 
+    if (checkError($_SESSION[$vars[$i]])) {
+        $errors[$vars[$i]]="error";
+    }
+   
+}
+
+
+
+
+if (sizeof($errors)==0) {
     // print("<h1>kk<h1>");
     printBody();
 }
 else {
-    $_SESSION["id"]="";
-    $_SESSION["style"]=[];
+
+    
+    $_SESSION["style"]=$errors;
     header("Location: curriForm.php");
 }
 
