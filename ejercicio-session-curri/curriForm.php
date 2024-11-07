@@ -32,15 +32,21 @@ include(__DIR__ . "/functions/funciones.php");
 $file = file_get_contents("./languajes.json");
 $languajes = json_decode($file, true);
 
+
+var_dump($_COOKIE["FormData"]);
+
+
 if (isset($_COOKIE["FormData"])) {
   session_name("FormData");
   session_start();
+  var_dump(session_status());
+  
 
   $values=$_SESSION;
  
-  $style=$_SESSION["style"];
+  $errores=$_SESSION["style"];
 
-  print("<p>existe</p>");
+  
 }
 else {
   $style=null;
@@ -48,11 +54,10 @@ else {
 }
 
 
-printForm($languajes[$_COOKIE['languaje']], $_COOKIE['backColor'],$style,$values);
+printForm($languajes[$_COOKIE['languaje']], $_COOKIE['backColor'],$errores,$values);
 
 
 
-var_dump($_SESSION);
 
 
 
