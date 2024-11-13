@@ -301,3 +301,10 @@ function checkAddCookies(){
   }
   
 
+function checkPhone($phone){
+  if(preg_match('/^[0-9]{9}+$/', $phone)) {
+    return true;
+    } else {
+    return false;
+    }
+}

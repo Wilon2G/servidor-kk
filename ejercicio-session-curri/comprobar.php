@@ -15,10 +15,14 @@ for ($i=0; $i < sizeof($vars); $i++) {
     $_SESSION[$vars[$i]]=checkInput($vars[$i]);
 }
 
-$id=$_SESSION["id"];
 
-if (!checkId($id)) {
+
+if (!checkId($_SESSION["id"])) {
     $_SESSION["id"]="";
+}
+
+if (!checkPhone($_SESSION["tlfn"])) {
+    $_SESSION["tlfn"]="";
 }
 
 $errors=[];

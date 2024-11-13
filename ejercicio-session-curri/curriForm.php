@@ -33,23 +33,19 @@ $file = file_get_contents("./languajes.json");
 $languajes = json_decode($file, true);
 
 
-var_dump($_COOKIE["FormData"]);
+// var_dump($_COOKIE["FormData"]);
 
 
 if (isset($_COOKIE["FormData"])) {
   session_name("FormData");
   session_start();
-  var_dump(session_status());
-  
-
+  // var_dump(session_status());
   $values=$_SESSION;
- 
   $errores=$_SESSION["style"];
-
   
 }
 else {
-  $style=null;
+  $errores=null;
   $values=null;
 }
 
