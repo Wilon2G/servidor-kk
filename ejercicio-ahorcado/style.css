@@ -1,0 +1,43 @@
+.letterBox {
+
+    width: 30px;
+    border-bottom: 2px solid black;
+    margin-left: 30px;
+}
+
+.secretWord {
+    display: flex;
+    justify-content: center;
+}
+
+.keyboard {
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+}
+
+.lettersLeft {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50%;
+}
+
+.letterButton {
+    width: 50px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+
+
+
+
+}
+
+.letterButton button {
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    border: none;
+    background-color: white;
+}
