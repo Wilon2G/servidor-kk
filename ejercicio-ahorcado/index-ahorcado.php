@@ -21,6 +21,7 @@
         $_SESSION=$_POST;
         $_SESSION["secretWord"]=pickRandomWord();
         $_SESSION["lettersLeft"]=str_split("QWERTYUIOPASDFGHJKLZXCVBNM");
+        $_SESSION["errors"]=0;
         
         header("location: ./game.php");
     }

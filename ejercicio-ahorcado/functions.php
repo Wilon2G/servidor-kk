@@ -27,20 +27,24 @@ function paintLettersLeft($lettersLeft){
 
 function letterInWord($letterIn,$secretLetters){
 
-    $inWord=false;
-
-    foreach ($secretLetters as $letter) {
-        if ($inWord===false) {
-            $inWord=array_search($letterIn,$letter);
-            
-        }
-        else {
-            return true;
-        }
-        
-        
+    for ($i=0; $i < sizeof($secretLetters); $i++) { 
+    if ($secretLetters[$i][0]==$letterIn) {
+        return true;
     }
+}
 
     return false;
     
+}
+
+
+
+
+function addLetter($letterIn,$word){
+    foreach ($word as $letter =>$i) {
+        if (in_array($letterIn,$letter)) {
+            $word[$i][1]=true;
+        }
+    }
+return $word;
 }
