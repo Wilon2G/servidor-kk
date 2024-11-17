@@ -23,33 +23,35 @@
         session_name("Game");
         session_start();
 
-        
+
 
 
 
         if (isset($_GET["letter"])) {
 
             //unset($_SESSION["lettersLeft"][array_keys($_SESSION["lettersLeft"],$_GET["letter"])]);
-            $_SESSION["lettersLeft"]=array_diff($_SESSION["lettersLeft"], array($_GET["letter"]));
+            $_SESSION["lettersLeft"] = array_diff($_SESSION["lettersLeft"], array($_GET["letter"]));
             //array_search()
+        
 
-            
-            if (letterInWord($_GET["letter"],$_SESSION["secretWord"])) {
-                print("<h1>Letra: ".$_GET["letter"]."  Existe en palabra</h1>");
-
-                for ($i=0; $i < sizeof($_SESSION["secretWord"]); $i++) { 
-                    if (in_array($_GET["letter"],$_SESSION["secretWord"][$i])) {
-                        $_SESSION["secretWord"][$i][1]=true;
+            if (letterInWord($_GET["letter"], $_SESSION["secretWord"])) {
+                //print("<h1>Letra: ".$_GET["letter"]."  Existe en palabra</h1>");
+        
+                for ($i = 0; $i < sizeof($_SESSION["secretWord"]); $i++) {
+                    if (in_array($_GET["letter"], $_SESSION["secretWord"][$i])) {
+                        $_SESSION["secretWord"][$i][1] = true;
                     }
+                }
+
+            } else {
+                $_SESSION["errors"]= $_SESSION["errors"]+$_SESSION["dif"];
+                if ($_SESSION["errors"]>8) {
+                    $_SESSION["errors"]=8;
                 }
                 
             }
-            else {
-                $_SESSION["errors"]++;
-                print("<h1>Letra: ".$_GET["letter"]." no está en la palabra</h1>");
-            }
-            print("<h2>Número de errores: ".$_SESSION["errors"]."</h2>");
-           
+            //print("<h2>Número de errores: ".$_SESSION["errors"]."</h2>");
+        
         }
 
         $secretWord = $_SESSION["secretWord"];
@@ -58,15 +60,21 @@
 
         //var_dump($secretWord);
         //var_dump($_SESSION["lettersLeft"]);
+        
+
+
         ?>
+
+
+        
+
 
         <div class="secretWord">
 
             <?php
             //Pintamos la palabra
-            for ($i = 0; $i < sizeof($secretWord); $i++) {
-                print ("<div class=\"letterBox\">" . ($secretWord[$i][1] === true ? $secretWord[$i][0] : "") . "</div>");
-            }
+            paintWord($secretWord);
+
 
             ?>
 
@@ -74,18 +82,43 @@
 
 
 
-        <div class="keyboard">
-
-
+        <div class="keyboard" style=<?php (round($_SESSION["errors"])<8|calculateWin($secretWord))?print(""):print("display:none")  ?>>
             <div class="lettersLeft">
-
                 <?php
-
                 paintLettersLeft($lettersLeft);
-
                 ?>
-
             </div>
+        </div>
+
+
+
+        <div class="endGame" style=<?php round($_SESSION["errors"])>=8||calculateWin($secretWord)?print(""):print("display:none")  ?>>
+            <h1>Game Over</h1>
+            <?php
+                if (calculateWin($secretWord)) {
+                    print("<h1>You Win!</h1>");
+                }
+                else {
+                    print("<h1>You Lose</h1>");
+                }
+
+
+            ?>
+
+        </div>
+
+
+
+
+
+
+
+        <div class="playerInfo">
+            <?php
+
+            print("<img src=\"./media/hangman".(round($_SESSION["errors"])).".png\" />")
+            ?>
+            
 
         </div>
 

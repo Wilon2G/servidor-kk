@@ -25,6 +25,12 @@ function paintLettersLeft($lettersLeft){
 
 }
 
+function paintWord($secretWord){
+    for ($i = 0; $i < sizeof($secretWord); $i++) {
+        print ("<div class=\"letterBox\">" . ($secretWord[$i][1] === true ? $secretWord[$i][0] : "") . "</div>");
+    }
+}
+
 function letterInWord($letterIn,$secretLetters){
 
     for ($i=0; $i < sizeof($secretLetters); $i++) { 
@@ -47,4 +53,15 @@ function addLetter($letterIn,$word){
         }
     }
 return $word;
+}
+
+function calculateWin($secretWord){
+    for ($i=0; $i < sizeof($secretWord) ; $i++) { 
+        if (!$secretWord[$i][1]) {
+            return false;
+        }
+    }
+
+    return true;
+
 }
