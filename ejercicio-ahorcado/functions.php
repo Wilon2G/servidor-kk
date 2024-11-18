@@ -65,3 +65,9 @@ function calculateWin($secretWord){
     return true;
 
 }
+
+function resetSession(){
+    $_SESSION["secretWord"]=pickRandomWord();
+    $_SESSION["lettersLeft"]=str_split("QWERTYUIOPASDFGHJKLZXCVBNM");
+    $_SESSION["errors"]=1;
+}
