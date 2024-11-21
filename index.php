@@ -49,6 +49,8 @@
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../examen-prueba/\"><button>Examen de Prueba </button></a>");
             print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-captcha/index-captcha\"><button>Ejercicio Captcha</button></a>");
+            print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
             // http://localhost/dashboard/
