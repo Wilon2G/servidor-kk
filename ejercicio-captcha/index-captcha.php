@@ -28,7 +28,7 @@
         }
     }
 
-    $string = randString(5);
+    $string = randString(1);
     $img = genImage($string);
 
     print ("<img src=\"data:image/jpeg;base64," . $img . "\" />");

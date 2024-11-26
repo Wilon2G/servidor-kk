@@ -19,10 +19,10 @@ function genImage($string)
     // $color=imagecolorallocate($img,0,0,0);
     // imagefttext($img,30,0,30,60,$color,$font,$string);
 
-
+$size=40-((strlen($string))*(imagesx($img))/100);
     for ($i = 0; $i < strlen($string); $i++) {
         $color = imagecolorallocate($img, random_int(100, 255), random_int(100, 255), random_int(100, 255));
-        imagefttext($img, (imagesx($img)-50) / (strlen($string)), 0, round(((imagesx($img)/strlen($string)-(imagesx($img) / strlen($string)) +(10*imagesx($img)/100)) + ($i *(imagesx($img) / strlen($string)) -(5*imagesx($img)/100)) )), round((imagesy($img)/2)+(((imagesx($img)) / (strlen($string)*1.7))/2)) , $color, $font, substr($string, $i, 1));
+        imagefttext($img, $size , 0, round(((((20-strlen($string))*imagesx($img)/100)) + ($i *($size )) )), round((imagesy($img)/2)+($size/2)) , $color, $font, substr($string, $i, 1));
     }
 //random_int(-20, 20) + random_int(-5, 5)
     //Color para el ruido y rejilla
