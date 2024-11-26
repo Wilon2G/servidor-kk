@@ -22,9 +22,9 @@ function genImage($string)
 
     for ($i = 0; $i < strlen($string); $i++) {
         $color = imagecolorallocate($img, random_int(100, 255), random_int(100, 255), random_int(100, 255));
-        imagefttext($img, 120 / strlen($string), random_int(-20, 20), 20 + $i * 35, 60 + random_int(-5, 5), $color, $font, substr($string, $i, 1));
+        imagefttext($img, (imagesx($img)-50) / (strlen($string)), 0, round(((imagesx($img)/strlen($string)-(imagesx($img) / strlen($string)) +(10*imagesx($img)/100)) + ($i *(imagesx($img) / strlen($string)) -(5*imagesx($img)/100)) )), round((imagesy($img)/2)+(((imagesx($img)) / (strlen($string)*1.7))/2)) , $color, $font, substr($string, $i, 1));
     }
-
+//random_int(-20, 20) + random_int(-5, 5)
     //Color para el ruido y rejilla
     $invertedColor = imagecolorallocate($img, 255 - random_int(0, 100), 255 - random_int(0, 100), 255 - random_int(0, 100));
 
@@ -50,7 +50,14 @@ function genImage($string)
     ob_start();
     imagejpeg($img);
     $temp = ob_get_clean();
+    imagedestroy($img);
 
     return base64_encode($temp);
 }
+
+/*
+XN / ANCHOTOTAL
+
+
+*/
 
