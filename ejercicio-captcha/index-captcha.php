@@ -28,7 +28,7 @@
         }
     }
 
-    $string = randString(1);
+    $string = randString(rand(4,7));
     $img = genImage($string);
 
     print ("<img src=\"data:image/jpeg;base64," . $img . "\" />");
@@ -47,7 +47,8 @@
     <input type=\"submit\" value=\"submit\">
 
     </form>
-
+    <br><br>
+    <a href=\"./index-captcha.php\"><button>Generate new captcha</button></a>
     ");
 
     ?>

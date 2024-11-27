@@ -18,13 +18,14 @@ function genImage($string)
 
     // $color=imagecolorallocate($img,0,0,0);
     // imagefttext($img,30,0,30,60,$color,$font,$string);
-
+//random_int(-20, 20) posible cambio de rotación
 $size=40-((strlen($string))*(imagesx($img))/100);
     for ($i = 0; $i < strlen($string); $i++) {
         $color = imagecolorallocate($img, random_int(100, 255), random_int(100, 255), random_int(100, 255));
-        imagefttext($img, $size , 0, round(((((20-strlen($string))*imagesx($img)/100)) + ($i *($size )) )), round((imagesy($img)/2)+($size/2)) , $color, $font, substr($string, $i, 1));
+        imagefttext($img, $size , random_int(-15, 15), round((((20-((strlen($string))*imagesx($img)/100))) + ($i *($size +(10-strlen($string)) )) )), round((imagesy($img)/2)+($size/2))+random_int(-10, 10) , $color, $font, substr($string, $i, 1));
     }
-//random_int(-20, 20) + random_int(-5, 5)
+
+
     //Color para el ruido y rejilla
     $invertedColor = imagecolorallocate($img, 255 - random_int(0, 100), 255 - random_int(0, 100), 255 - random_int(0, 100));
 
