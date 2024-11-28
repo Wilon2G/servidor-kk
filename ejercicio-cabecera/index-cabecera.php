@@ -7,8 +7,14 @@
 </head>
 <body>
     <?php
-    require_once "./MiCabecera.php";
+    require_once "../clases/MiCabecera.php";
+
+    $header= new MiCabecera("Ejercicio de cabeceras","green");
+
+    $header->paintHeader();
+
 
     ?>
+    
 </body>
 </html>
