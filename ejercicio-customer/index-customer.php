@@ -11,9 +11,9 @@
     <?php
     require_once "../clases/Customer.php";
 
-    $customer1 = new Customer(3649, "Pepe", "Longuito Menzol", "pepitomenzolo@gmail.com");
-    $customer2 = new Customer(2387, "Jertrudis", "Mendoza Ozaoza", "mendzamendza@gmail.com");
-    $customer3 = new Customer(9854, "Alberto", "Canal Abierto", "albertodejo@gmail.com");
+    $customer1 = new Customer( "Pepe", "Longuito Menzol", "pepitomenzolo@gmail.com");
+    $customer2 = new Customer( "Jertrudis", "Mendoza Ozaoza", "mendzamendza@gmail.com");
+    $customer3 = new Customer("Alberto", "Canal Abierto", "albertodejo@gmail.com");
 
     $customers = [$customer1, $customer2, $customer3];
 
