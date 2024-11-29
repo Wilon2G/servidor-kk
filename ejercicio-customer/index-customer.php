@@ -9,7 +9,8 @@
 
 <body>
     <?php
-    require_once "../clases/Customer.php";
+    spl_autoload_register('classAutoLoader');
+    //require_once "../clases/Customer.php";
 
     $customer1 = new Customer( "Pepe", "Longuito Menzol", "pepitomenzolo@gmail.com");
     $customer2 = new Customer( "Jertrudis", "Mendoza Ozaoza", "mendzamendza@gmail.com");
@@ -20,8 +21,20 @@
     for ($i=0; $i < sizeof($customers); $i++) { 
         print($customers[$i]);
     }
+    
 
     ?>
 </body>
 
 </html>
+
+
+<?php
+
+ function classAutoLoader($class){
+    $class=strtolower($class);
+    $classFile=$_SERVER['DOCUMENT_ROOT'].'/servidor/clases/'.$class.'.php';
+    if(is_file($classFile)&&!class_exists($class)) include $classFile;}
+
+    
+?>

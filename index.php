@@ -53,7 +53,9 @@
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-cabecera/index-cabecera.php\"><button>Ejercicio Cabecera (objetos)</button></a>");
             print("<br>");
-            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-customer/index-customer.php\"><button>Ejercicio Customer (objetos) (objetos)</button></a>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-customer/index-customer.php\"><button>Ejercicio Customer (objetos)</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-figuras/index-figuras.php\"><button>Ejercicio Figuras (objetos)</button></a>");
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         

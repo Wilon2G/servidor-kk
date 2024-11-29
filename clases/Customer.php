@@ -9,7 +9,7 @@ class Customer
 
     public function __construct($name, $surnames, $email)
     {
-        $this->id=self::$lastId+1;
+        $this->id=self::$lastId+100;
         self::$lastId++;
         $this->name = $name;
         $this->surnames = $surnames;
@@ -43,6 +43,10 @@ class Customer
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function getId(){
+        return $this->id;
     }
 
     public function setName($name)
