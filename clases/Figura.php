@@ -1,11 +1,8 @@
 <?php
 abstract class Figura{
-    private $color;
-    private $vertex;
+    protected $color;
+    protected $vertex;
 
     abstract  function draw();
-    abstract function getColor();
-    abstract function setColor($color);
-    abstract function getVertex();
-    
+    abstract function getMessage();
 }
