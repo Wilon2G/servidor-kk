@@ -33,7 +33,7 @@ print($img);
 
 
 ?>
-<a href="./index-figuras.php"><button>Volver</button></a>
+<a href="./index.php"><button>Volver</button></a>
     
 </body>
 </html>

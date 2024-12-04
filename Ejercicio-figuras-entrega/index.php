@@ -23,16 +23,17 @@
 
     ?>
     <form class="config" action="#" method="POST">
+    <label class="chosenColor">Color:
+            <input type="color" name="chosenColor" value="<?php print ($_SESSION["color"]) ?>">
+        </label>
+        <br>
         <label class="figure">Figura:
             <input type="radio" name="fig" value="sqr" <?php $_SESSION["fig"] === "sqr" ? print ("checked") : "" ?>>Cuadrado</input>
             <input type="radio" name="fig" value="trg" <?php $_SESSION["fig"] === "trg" ? print ("checked") : "" ?>>Triangulo</input>
             <input type="radio" name="fig" value="crl" <?php $_SESSION["fig"] === "crl" ? print ("checked") : "" ?>>Circulo</input>
         </label>
         <br>
-        <label class="chosenColor">Color:
-            <input type="color" name="chosenColor" value="<?php print ($_SESSION["color"]) ?>">
-        </label>
-        <br>
+        
         <input class="continue" type="submit" name="continue" value="Continuar">
     </form>
 
