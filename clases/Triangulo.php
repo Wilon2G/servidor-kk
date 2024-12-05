@@ -4,18 +4,23 @@ class Triangulo extends Figura
     
     private $heith;
     private $base;
-    function __construct($base, $altura, $color)
+    function __construct($base, $altura,$rectangle, $color)
     {
         $this->base = $base;
         $this->heith = $altura;
         $this->color = $color;
-        $this->vertex = [0, $altura, $base, $altura, $base / 2, 0];
+        if ($rectangle) {
+            $this->vertex = [0, $altura, $base, $altura, $base, 0];
+        }
+        else{
+            $this->vertex = [0, $altura, $base, $altura, $base / 2, 0];
+        }
 
     }
     function draw()
     {
         $img = imagecreatetruecolor($this->base, $this->heith);
-        $bg=imagecolorallocate($img,255,255,255);
+        $bg=imagecolorallocate($img,250,235,215);
         imagefill($img,0,0,$bg);
         $color = imagecolorallocate($img, $this->color[0], $this->color[1], $this->color[2]);
         imagefilledpolygon($img, $this->vertex,  $color);

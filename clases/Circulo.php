@@ -14,7 +14,7 @@ class Circulo extends Figura{
     }
     function draw(){
         $img=imagecreatetruecolor($this->radio,$this->radio);
-        $bg=imagecolorallocate($img,255,255,255);
+        $bg=imagecolorallocate($img,250,235,215);
         imagefill($img,0,0,$bg);
         $color = imagecolorallocate($img, $this->color[0], $this->color[1], $this->color[2]);
         imagefilledarc($img,$this->radio/2,$this->radio/2,$this->radio,$this->radio,0,360,$color,IMG_ARC_PIE);

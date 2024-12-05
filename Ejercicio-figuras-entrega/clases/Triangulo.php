@@ -4,12 +4,17 @@ class Triangulo extends Figura
     
     private $heith;
     private $base;
-    function __construct($base, $altura, $color)
+    function __construct($base, $altura,$rectangle, $color)
     {
         $this->base = $base;
         $this->heith = $altura;
         $this->color = $color;
-        $this->vertex = [0, $altura, $base, $altura, $base / 2, 0];
+        if ($rectangle) {
+            $this->vertex = [0, $altura, $base, $altura, $base, 0];
+        }
+        else{
+            $this->vertex = [0, $altura, $base, $altura, $base / 2, 0];
+        }
 
     }
     function draw()

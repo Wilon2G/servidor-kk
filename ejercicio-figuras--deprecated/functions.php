@@ -2,7 +2,7 @@
 function classAutoLoader($class)
 {
     $class = strtolower($class);
-    $classFile = $_SERVER['DOCUMENT_ROOT'] . '/ejercicio-figuras-entrega/clases/' . $class . '.php';
+    $classFile = $_SERVER['DOCUMENT_ROOT'] . '/servidor/clases/' . $class . '.php';
     if (is_file($classFile) && !class_exists($class))
         include $classFile;
 }
@@ -22,8 +22,6 @@ function showForm($fig)
     if ($fig === "trg") {
         print ("<lable>Base del Triángulo: <input type=\"number\" name=\"base\" required></lable> ");
         print ("<lable>Altura del Triángulo: <input type=\"number\" name=\"heigth\" required></lable> ");
-        print ("<lable>Rectangulo: <input type=\"checkbox\" name=\"rectangulo\" ></lable> ");
-
     }
     if ($fig === "crl") {
         print ("<lable>Radio del Cículo: <input type=\"number\" name=\"radio\" required></lable> ");

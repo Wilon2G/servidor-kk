@@ -22,7 +22,13 @@ if ($_SESSION["fig"]=="sqr") {
 }
 
 if ($_SESSION["fig"]=="trg") {
-    $img= new Triangulo($_POST["base"],$_POST["heigth"],$color);
+    if (isset($_POST["rectangulo"])) {
+        $img= new Triangulo($_POST["base"],$_POST["heigth"],true,$color);
+    }
+    else{
+        $img= new Triangulo($_POST["base"],$_POST["heigth"],false,$color);
+
+    }
 }
 
 if ($_SESSION["fig"]=="crl") {
@@ -33,7 +39,7 @@ print($img);
 
 
 ?>
-<a href="./index-figuras.php"><button>Volver</button></a>
+<a href="./index.php"><button>Volver</button></a>
     
 </body>
 </html>
