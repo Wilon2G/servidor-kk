@@ -9,6 +9,7 @@ class Cuadrado extends Figura
         $this->color = $color;
         $this->vertex = 4;
         $this->side = $side;
+        
 
     }
     function draw()

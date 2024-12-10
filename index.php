@@ -59,6 +59,8 @@
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-figuras-v2/\"><button>Ejercicio Figuras v2 (objetos)</button></a>");
             print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../BASES_MYSQL/index_tablas\"><button>Generar tablas</button></a>");
+            print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
             // http://localhost/dashboard/

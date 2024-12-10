@@ -15,6 +15,7 @@ class Triangulo extends Figura
         else{
             $this->vertex = [0, $altura, $base, $altura, $base / 2, 0];
         }
+        
 
     }
     function draw()

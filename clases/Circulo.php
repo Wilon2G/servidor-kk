@@ -4,6 +4,7 @@ class Circulo extends Figura{
     function __construct($radio,$color){
         $this->radio=$radio;
         $this->color=$color;
+        
     }
     function __tostring(){
         return ("<div style=\"text-align:center; width: fit-content;\">

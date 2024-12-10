@@ -52,12 +52,16 @@
         if ($_POST["generate"]=="Generar") {
             array_push($_SESSION["figures"],generateFigure());
         //var_dump($_SESSION["figures"]);
+        
         }
     }
 
     print("<div class=\"playGround\">");
     for ($i=0; $i < sizeof($_SESSION["figures"]); $i++) { 
+        print("<div class=\"fig\">");
         print($_SESSION["figures"][$i]);
+        print("</div>");
+
     }
     print("</div>");
 
