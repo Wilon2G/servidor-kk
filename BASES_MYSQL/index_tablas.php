@@ -1,18 +1,18 @@
 <?php
+include "./database.conf.php";
 
 print("Estableciendo conexión...<br>");
 
 try {
-  $con = new PDO('mysql:dbname=libro;host=127.0.0.1', "root", "");
+  $con = new PDO('mysql:dbname='.DBNAME.';host='.HOST, USERNAME, PASSWORD);
   print("Conexión exitosa<br>");
 } catch (PDOException $Exception) {
   if ($Exception->getCode( )==1049) {
     print("La base de datos no existía, creando base de datos...<br>");
     print(  $Exception->getMessage( ) ." --------- ". $Exception->getCode( )."<br>" );
-    $con = new PDO('mysql:host=127.0.0.1', "root", "");
-    $sql="
-    CREATE DATABASE LIBRO
-    ";
+    $con = new PDO('mysql:host='.$host, USERNAME, PASSWORD);
+    $sql=("
+    CREATE DATABASE ".DBNAME);
     try {
       $con->query($sql);
       print("Base de datos creada correctamente<br>");
@@ -167,8 +167,11 @@ ALTER TABLE `sale_book`
 
 EOT;
 
+print("Creando tablas...");
 
+$con->query($sql);
 
+print("Tablas creadas con éxito");
 
 //Primeros Intentos, tablas con relaciones fk:
 
