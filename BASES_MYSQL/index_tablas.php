@@ -1,34 +1,34 @@
 <?php
 include "./database.conf.php";
-
-print("Estableciendo conexión...<br>");
+$con;
+print ("Estableciendo conexión...<br>");
 
 try {
-  $con = new PDO('mysql:dbname='.DBNAME.';host='.HOST, USERNAME, PASSWORD);
-  print("Conexión exitosa<br>");
+  $con = new PDO('mysql:dbname=' . DBNAME . ';host=' . HOST, USERNAME, PASSWORD);
+  print ("Conexión exitosa<br>");
 } catch (PDOException $Exception) {
-  if ($Exception->getCode( )==1049) {
-    print("La base de datos no existía, creando base de datos...<br>");
-    print(  $Exception->getMessage( ) ." --------- ". $Exception->getCode( )."<br>" );
-    $con = new PDO('mysql:host='.$host, USERNAME, PASSWORD);
-    $sql=("
-    CREATE DATABASE ".DBNAME);
+  if ($Exception->getCode() == 1049) {
+    print ("La base de datos no existía, creando base de datos...<br>");
+    print ($Exception->getMessage() . " --------- " . $Exception->getCode() . "<br>");
+    $con = new PDO('mysql:host=' . HOST, USERNAME, PASSWORD);
+    $sql = ("CREATE DATABASE " . DBNAME);
     try {
       $con->query($sql);
-      print("Base de datos creada correctamente<br>");
+      print ("Base de datos creada correctamente<br>");
+      $con = new PDO('mysql:dbname=' . DBNAME . ';host=' . HOST, USERNAME, PASSWORD);
+      print ("Conexión a la nueva base de datos exitosa<br>");
     } catch (PDOException $Exception2) {
-      print("Error al crear la base de datos<br>");
-      throw new Exception( $Exception->getMessage( ) , $Exception->getCode( ) );
-        }
-  }
-  else {
-    print("Error con la base de datos:<br>");
-    throw new Exception( $Exception->getMessage( ) , $Exception->getCode( ) );
+      print ("Error al crear la base de datos<br>");
+      throw new Exception($Exception->getMessage(), $Exception->getCode());
     }
+  } else {
+    print ("Error con la base de datos:<br>");
+    throw new Exception($Exception->getMessage(), $Exception->getCode());
+  }
 }
+$con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-
-$sql= <<<EOT
+$sql = <<<EOT
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -102,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `borrowed_books` (
 
 CREATE TABLE IF NOT EXISTS `customer` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `password` varchar(255) NOT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `surname` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -167,11 +168,19 @@ ALTER TABLE `sale_book`
 
 EOT;
 
-print("Creando tablas...");
+print ("Creando tablas...");
+try {
+  $con->exec($sql);
+  print ("Tablas creadas con éxito<br>");
+  print("Datos añadidos a la base de datos<br>");
+} catch (PDOException $Exception) {
+  if ($Exception->getCode() == 23000) {
+    print("Tablas creadas con éxito<br>");
+    print("Base de datos ya está poblada<br>");
+  }
+}
 
-$con->query($sql);
 
-print("Tablas creadas con éxito");
 
 //Primeros Intentos, tablas con relaciones fk:
 
