@@ -14,7 +14,7 @@ class DBconnection {
     protected $connect;
 
     public function __construct() {
-        $config = json_decode(file_get_contents('../databaseConfig.json'), true);
+        $config = json_decode(file_get_contents(__DIR__.'\..\databaseConfig.json'), true);
         $this->host = $config['host'];
         $this->db = $config['dbname'];
         $this->user = $config['user'];

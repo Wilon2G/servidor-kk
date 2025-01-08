@@ -13,10 +13,14 @@ public function __construct($email, $password, $type ){
     $this->type=$type;
 }
 
-public function checkCustomer(){
-$con=new DBconnection();
+// public function checkCustomer(){
+// $con=new DBconnection();
+// $users=$con->exec("select email from customer");
+// foreach ($users as $user) {
+//     var_dump($user);
+// }
 
-}
+// }
 
 
 }
