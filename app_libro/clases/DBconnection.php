@@ -2,6 +2,7 @@
 //namespace nombre;
 
 /* recordar incluirlo en el index.php require '../vendor/autoload.php';*/
+
 use \PDO;
 use \PDOException;
 
@@ -20,6 +21,7 @@ class DBconnection {
         $this->user = $config['user'];
         $this->pass = $config['pass'];
         $this->dsn = "mysql:host={$this->host};dbname={$this->db};charset=utf8mb4";
+
         $this->connect = DBconnection::crearConect($config);
     }
 
@@ -29,19 +31,32 @@ class DBconnection {
 
     private function crearConect($config) {
         try {
-            $connect = new PDO($this->dsn, $this->user, $this->pass);
-        }
-        catch(PDOException $e) {
-            
-            
-            if ($e->getCode() === 1049) { // Database no existe
-                $connect = new PDO("mysql:host={$this->host}", $this->user, $this->pass);
-                $sqlFile = file_get_contents("../sql/.sql");
-                $stm = $connect->prepare($sqlFile);
-                $stm->execute();
+            echo "<p>Estableciendo conexión con la base de datos...</p>";
+
+            $connect = new PDO('mysql:dbname=' . $this->db . ';host=' . $this->host, $this->user, $this->pass);
+            echo "<p>Conexión con la base de datos exitosa</p>";
+        }catch (PDOException $Exception) {
+            if ($Exception->getCode() == 1049) {
+              print ("La base de datos no existía, creando base de datos...<br>");
+              print ($Exception->getMessage() . " --------- " . $Exception->getCode() . "<br>");
+              $con = new PDO('mysql:host=' . $this->host, $this->user, $this->pass);
+              $sql = ("CREATE DATABASE " . $this->db);
+              try {
+                $con->query($sql);
+                print ("Base de datos creada correctamente<br>");
+                $con = new PDO('mysql:dbname=' . $this->db . ';host=' . $this->host, $this->user, $this->pass);
+                print ("Conexión a la nueva base de datos exitosa<br>");
+              } catch (PDOException $Exception2) {
+                print ("Error al crear la base de datos<br>");
+                throw new Exception($Exception->getMessage(), $Exception->getCode());
+              }
+            } else {
+              print ("Error con la base de datos:<br>");
+              print ($Exception->getMessage() . " --------- " . $Exception->getCode() . "<br>");
+              throw new Exception($Exception->getMessage(), $Exception->getCode());
             }
-            $connect = new PDO($this->dsn, $this->user, $this->pass);
-            }
+          }
+        
        /* $tableExists = $connect->query("SELECT * FROM table"); // Comprobar si existen las tablas pero no es necesario
         if (!$tableExists) { 
             $sqlFile = file_get_contents("../sql/{$this->db}.sql");

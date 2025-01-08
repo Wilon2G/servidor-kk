@@ -8,11 +8,28 @@ function classAutoLoader($class)
         include $classFile;
 }
 
-function checkCustomer($customer){
+function checkCustomer2($username, $password) {
+    // Crea una instancia de DBconnection
+
+    $conObj = new DBconnection();
+
+    $con=$conObj->getConnect();
+
+    // Realiza la consulta usando 'query' para obtener todos los correos
+    $users=$con->query("SELECT email FROM customer")->fetchAll();
+    foreach ($users as $user ) {
+        var_dump($user);
+    }
+    
+}
+
+
+
+function checkCustomer($username, $password){
     $con=new DBconnection();
-    $users=($con->getConnect()->exec("select email from customer"));
+    $users=($con->getConnect()->query("select email from customer"));
     foreach ($users as $user) {
         var_dump($user);
     }
     
-    }
+}
