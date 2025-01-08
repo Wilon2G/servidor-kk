@@ -31,20 +31,20 @@ class DBconnection {
 
     private function crearConect($config) {
         try {
-            echo "<p>Estableciendo conexión con la base de datos...</p>";
+            //echo "<p>Estableciendo conexión con la base de datos...</p>";
 
             $connect = new PDO('mysql:dbname=' . $this->db . ';host=' . $this->host, $this->user, $this->pass);
-            echo "<p>Conexión con la base de datos exitosa</p>";
+            //echo "<p>Conexión con la base de datos exitosa</p>";
         }catch (PDOException $Exception) {
             if ($Exception->getCode() == 1049) {
               print ("La base de datos no existía, creando base de datos...<br>");
               print ($Exception->getMessage() . " --------- " . $Exception->getCode() . "<br>");
-              $con = new PDO('mysql:host=' . $this->host, $this->user, $this->pass);
+              $connect = new PDO('mysql:host=' . $this->host, $this->user, $this->pass);
               $sql = ("CREATE DATABASE " . $this->db);
               try {
-                $con->query($sql);
+                $connect->query($sql);
                 print ("Base de datos creada correctamente<br>");
-                $con = new PDO('mysql:dbname=' . $this->db . ';host=' . $this->host, $this->user, $this->pass);
+                $connect = new PDO('mysql:dbname=' . $this->db . ';host=' . $this->host, $this->user, $this->pass);
                 print ("Conexión a la nueva base de datos exitosa<br>");
               } catch (PDOException $Exception2) {
                 print ("Error al crear la base de datos<br>");

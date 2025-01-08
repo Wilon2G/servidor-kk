@@ -46,7 +46,7 @@
         </form>");
         
         if (isset($_POST["loginAttempt"])) {
-            print("<p>kk</p>");
+            
             checkCustomer2($_POST["userName"], $_POST["password"]);
         }
         else {
