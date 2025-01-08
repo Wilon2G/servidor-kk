@@ -49,6 +49,20 @@
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../examen-prueba/\"><button>Examen de Prueba </button></a>");
             print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-captcha/index-captcha\"><button>Ejercicio Captcha</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-cabecera/index-cabecera.php\"><button>Ejercicio Cabecera (objetos)</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-customer/index-customer.php\"><button>Ejercicio Customer (objetos)</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-figuras/\"><button>Ejercicio Figuras (objetos)</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-figuras-v2/\"><button>Ejercicio Figuras v2 (objetos)</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../BASES_MYSQL/index_tablas\"><button>Generar tablas</button></a>");
+            print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../app_libro/\"><button>App Libro</button></a>");
+            print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
             // http://localhost/dashboard/
