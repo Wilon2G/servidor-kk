@@ -31,7 +31,7 @@ function checkCustomer2($username, $password) {
         $stmt = $con->prepare("SELECT password FROM customer WHERE email = :email");
         $stmt->execute(['email' => $username]);
         $userPass = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($userPass==md5($password)) {
+        if ($userPass["password"]===md5($password)) {
             echo("<p>Login successful");
             //var_dump($userPass);
             //var_dump($users);
