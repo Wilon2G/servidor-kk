@@ -11,6 +11,7 @@
     <h1>Welcome</h1>
     <?php
     include_once "./clases/book.php";
+    include_once "./clases/customer.php";
     require_once "./utils.php";
 
     print ("<form action=\"#\" method=\"POST\">
@@ -32,19 +33,26 @@
         if (isset($_POST["chosenBook"])) {
             //var_dump($_POST["chosenBook"]);
             $chosenBook=getBook($_POST["chosenBook"]);
+            $customer=getCustomer($_SESSION["logedUser"]["id"]);
+            print("Usuario: ".$customer["firstname"]);
 
-            print("You have chosen: ".$chosenBook["title"]."<br>");
-            print("By: ".$chosenBook["author"]);
+            print("<br><p>You have chosen: ".$chosenBook["title"]."</p><br>");
+            print("<p>By: ".$chosenBook["author"]."</p>");
             print("<form action=\"#\" method=\"POST\">
             <input type=\"hidden\" name=\"rentBook\" value=\"Rent book\" />
             <input type=\"hidden\" name=\"bookId\" value=\"".$_POST["chosenBook"]."\" />
-            <input type=\"submit\" name=\"confirmRent\" value=\"confirm\"/>
+            <input type=\"submit\" name=\"confirmRent\" value=\"Confirm\"/>
             </form>
             ");
         }
         if (isset($_POST["confirmRent"])) {
             $chosenBook=getBook($_POST["bookId"]);
-            var_dump($chosenBook);
+            $rentedBook= new Book($chosenBook["isbn"],$chosenBook["title"],$chosenBook["author"],$chosenBook["stock"],$chosenBook["price"]);
+            $message=$rentedBook->rentBook($_SESSION["logedUser"]["id"]);
+            //var_dump($customer);
+            print($message);
+            //var_dump($_SESSION);
+            //var_dump($chosenBook);
         }
     }
 

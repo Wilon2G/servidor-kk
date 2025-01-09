@@ -9,50 +9,9 @@ function classAutoLoader($class)
         include $classFile;
 }
 
-function showBooks(){
-    $conObj = new DBconnection();
-    $con=$conObj->getConnect();
 
-    $books = $con->query("SELECT title,id,author FROM book")->fetchAll();
 
-    //var_dump($books);
-    foreach ($books as $book) {
-        print("<form action=\"#\" method=\"POST\">
-        <input type=\"submit\" name=\"chosenBook\" value=\"".$book["id"]."\"
-        <div>
-        ".
-        $book["title"]
-        .
-        "
-        </div>
-        </input>
-        <input type=\"hidden\" name=\"rentBook\"/>
-        </form>
-        ");
-    }
-}
 
-function getBook($id){
-    $conObj = new DBconnection();
-    $con=$conObj->getConnect();
-
-    $stmt = $con->prepare("SELECT * FROM book WHERE id = :id");
-    $stmt->execute(['id' => $id]);
-    $book=$stmt->fetch(PDO::FETCH_ASSOC);
-    //var_dump($book);
-    return $book;
-}
-
-function getCustomer($id){
-    $conObj = new DBconnection();
-    $con=$conObj->getConnect();
-
-    $stmt = $con->prepare("SELECT * FROM customer WHERE id = :id");
-    $stmt->execute(['id' => $id]);
-    $customer=$stmt->fetch(PDO::FETCH_ASSOC);
-    //var_dump($book);
-    return $customer;
-}
 
 
 

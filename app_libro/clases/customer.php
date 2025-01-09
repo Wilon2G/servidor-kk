@@ -30,6 +30,15 @@ function __get($name){
 // }
 
 // }
+}
 
+function getCustomer($id){
+    $conObj = new DBconnection();
+    $con=$conObj->getConnect();
 
+    $stmt = $con->prepare("SELECT * FROM customer WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    $customer=$stmt->fetch(PDO::FETCH_ASSOC);
+    //var_dump($book);
+    return $customer;
 }
