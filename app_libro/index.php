@@ -1,3 +1,10 @@
 <?php
+session_start();
 
-header("location:./indexLogin.php");
+if (!isset($_SESSION["logedUser"])) {
+    header("location:./indexLogin.php");
+}
+else {
+    header("location:mainpage.php");
+}
+
