@@ -63,7 +63,7 @@ function getBookId($isbn){
 
 
 }
-function showBooks(){
+function showAllBooks(){
     $conObj = new DBconnection();
     $con=$conObj->getConnect();
 
@@ -84,6 +84,16 @@ function showBooks(){
         </form>
         ");
     }
+}
+
+function showBookById($idArray){
+    foreach ($idArray as $idBook) {
+        foreach ($idBook as $id ) {
+            $book=getBook($id);
+            print("<p>".$book["title"]."<p>");
+        }
+    }
+
 }
 
 function getBook($id){

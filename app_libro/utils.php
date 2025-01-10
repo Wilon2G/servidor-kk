@@ -59,7 +59,18 @@ function checkCustomer2($username, $password) {
     
 }
 
+function getRentedBooks($userId){
+    $conObj = new DBconnection();
+    $con=$conObj->getConnect();
+    $stmt = $con->prepare("SELECT book_id FROM borrowed_books WHERE customer_id = :customer_id");
+    $stmt->execute(['customer_id' => $userId]);
+    
+    $rentedBooks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    return $rentedBooks;
+    
 
+}
 
 function checkCustomer($username, $password){
     $con=new DBconnection();

@@ -28,8 +28,21 @@
 
         </form><br><br>");
 
+    if (isset($_POST["returnBook"])) {
+        $rentedBooks=getRentedBooks($_SESSION["logedUser"]["id"]);
+        if (sizeof($rentedBooks)===0) {
+            print("You don't have books rented");
+            
+        }
+        else {
+            showBookById($rentedBooks);
+            
+        }
+
+    }
+
     if (isset($_POST["rentBook"])) {
-        showBooks();
+        showAllBooks();
         if (isset($_POST["chosenBook"])) {
             //var_dump($_POST["chosenBook"]);
             $chosenBook=getBook($_POST["chosenBook"]);
