@@ -59,11 +59,7 @@ function deleteBook(){
     
     $result = $stmt->execute(["isbn" => $this->isbn]);
 
-    if ($result) {
-        return "Book deleted successfully.";
-    } else {
-        return "Error: Could not delete the book.";
-    }
+    return $result;
 }
 
 function addBook(){
@@ -87,8 +83,6 @@ function rentBook($customerId){
     $id=$this->getBookId($this->isbn);
 
     $stmt2 = $con->prepare("UPDATE book SET stock = :stock WHERE isbn = :isbn ");
-    
-
     
     try {
         $stmt->execute(['book_id' => $id, 'customer_id' => $customerId, 'start' => date('d-m-y H:i:s'), 'end' => null, ]);

@@ -1,0 +1,13 @@
+.bookContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mainForm{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mainForm>input{
+    height: 60px;
+}

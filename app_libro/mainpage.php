@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Main Page</title>
 </head>
 
 <body>
-    <h1>Welcome</h1>
+    <h1>Welcome to the Digital BookShop</h1>
     <?php
     include_once "./clases/book.php";
     include_once "./clases/customer.php";
     require_once "./utils.php";
 
-    print ("<form action=\"#\" method=\"POST\">
+    if (!isset($_SESSION["logedUser"])) {
+        header("location:./indexLogin.php");
+    }
+
+    print ("<form action=\"#\" method=\"POST\" class=\"mainForm\" >
         
         <input type=\"submit\" name=\"insertBook\" value=\"Insert book\" />
 
@@ -26,11 +31,18 @@
 
         <input type=\"submit\" name=\"seeBooks\" value=\"See my books\" />
 
+        <input type=\"submit\" name=\"logOut\" value=\"Log Out\" />
+
 
         <input type=\"submit\" name=\"debug\" value=\"debug mode\" />
 
 
         </form><br><br>");
+
+    if (isset($_POST["logOut"])) {
+        $_SESSION=[];
+        header("Refresh: .1");
+    }
 
     if (isset($_POST["debug"])) {
         print("Welcome to debug mode, this is only for the developers to try new things!");
@@ -44,6 +56,7 @@
             
         }
         else {
+            print("<div class=\"bookContainer\">");
             foreach ($rentedBooks as $bookId) {
                 $book=Book::fromId($bookId["book_id"]);
                 print("
@@ -54,6 +67,8 @@
                 <br><br>
                 ");
             }
+            print("</div>");
+
         }
         
     }
@@ -72,7 +87,15 @@
         }
         if (isset($_POST["confirmDelete"])) {
             $chosenBook=Book::fromId($_POST["bookId"]);
-            $chosenBook->deleteBook();
+            $success=$chosenBook->deleteBook();
+            if ($success) {
+                //header("Refresh: 1");
+                print("<p style=\"color:red;\" >Book deleted</p>");
+            }
+            else {
+                print("<p style=\"color:red;\" >Error, try again later</p>");
+            }
+            
         }
     }
 
@@ -153,7 +176,7 @@
         print ("<form action=\"#\" method=\"POST\">
         <lable>
             ISBN:
-            <input type=\"text\" name=\"isbn\" placeholder=\"xxx-x-xx-xxxx\" required ></input>
+            <input type=\"text\" name=\"isbn\" placeholder=\"xxx-x-xx-xxxx\" pattern=\"[0-9]{3}-[0-9]-[0-9]{2}-[0-9]{4}\" required ></input>
         </lable>
         <lable>
             Title:

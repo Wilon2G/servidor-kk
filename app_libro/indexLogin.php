@@ -47,10 +47,7 @@
         
         if (isset($_POST["loginAttempt"])) {
             
-            checkCustomer2($_POST["userName"], $_POST["password"]);
-        }
-        else {
-            print("<p>No Attempt</p>");
+            checkCustomer($_POST["userName"], $_POST["password"]);
         }
     }
     ?>

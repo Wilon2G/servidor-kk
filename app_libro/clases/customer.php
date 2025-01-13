@@ -10,7 +10,7 @@ private $type;
 private $firstName;
 private $surname;
 
-public function __construct($email, $password, $type,$firstName,$surname,$id ){
+public function __construct($email, $password, $type,$firstName,$surname,$id=null ){
     $this->email=$email;
     $this->password=$password;
     $this->type=$type;
