@@ -89,7 +89,42 @@ function returnBook($bookId){
     else{
         return "There was an error in the return, please try again later or contact the developer";
     }
+}
+
+
+function buyBook($bookId,$price){
+    $conObj = new DBconnection();
+    $con=$conObj->getConnect();
+
+    $saleStmt = $con->prepare("INSERT INTO sale (customer_id, date) VALUES (:customer_id, :date)");
+
+    $date=date('d-m-y H:i:s');
+
+    $sale=$saleStmt->execute(["customer_id"=>$this->id,"date"=>$date]);
+
+    if ($sale) {
+        $saleIdStmt=$con->prepare("SELECT id FROM sale WHERE customer_id = :customer_id AND date=:date");
+        $saleIdStmt->execute(["customer_id"=>$this->id,"date"=>$date]);
+        $saleId=$saleIdStmt->fetch(PDO::FETCH_ASSOC);
+        if ($saleId) {
+            $saleBookStmt = $con->prepare("INSERT INTO sale_book (book_id, sale_id,amount) VALUES (:book_id, :sale_id, :amount)");
+            $saleBook=$saleBookStmt->execute(["book_id"=>$bookId,"sale_id"=>$saleId["id"],"amount"=>$price]);
+            if ($saleBook) {
+                return "Transaction accomplished";
+            }
+            else {
+                return "Error in sale Book";
+            }
+        }
+        else {
+            return "Error in sale Id";
+        }
     }
+    else{
+        return "Error in sale";
+    }
+}
+
 
 }
 
@@ -103,3 +138,6 @@ function getCustomer($id){
     //var_dump($book);
     return $customer;
 }
+
+
+

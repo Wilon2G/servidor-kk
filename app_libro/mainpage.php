@@ -25,6 +25,8 @@
 
         <input type=\"submit\" name=\"rentBook\" value=\"Rent book\" />
 
+        <input type=\"submit\" name=\"buyBook\" value=\"Buy book\" />
+
         <input type=\"submit\" name=\"returnBook\" value=\"Return book\" />
 
         <input type=\"submit\" name=\"deleteBook\" value=\"Delete book\" />
@@ -44,6 +46,31 @@
         header("Refresh: .1");
     }
 
+    if (isset($_POST["buyBook"])) {
+        showAllBooks("buyBook");
+        if (isset($_POST["chosenBook"])) {
+            $chosenBook=Book::fromId($_POST["chosenBook"]);
+            print("<br><p>You have chosen: ".$chosenBook->title."</p><br>");
+            print("<p>By: ".$chosenBook->author."</p>");
+            print("<p style=\"color: ".($chosenBook->stock<=0? "red":"")."\" >Stock: ".$chosenBook->stock."</p>");
+            print("<p>Price: ".$chosenBook->price."</p>");
+            print("<form action=\"#\" method=\"POST\">
+            <input type=\"hidden\" name=\"buyBook\" value=\"\" />
+            <input type=\"hidden\" name=\"bookId\" value=\"".$_POST["chosenBook"]."\" />
+            <input type=\"submit\" name=\"confirmBuy\" value=\"Confirm\"  ".($chosenBook->stock<=0? "disabled":"")."  />
+            </form>
+            ");
+        }
+        if (isset($_POST["confirmBuy"])) {
+            $customer= Customer::fromId($_SESSION["logedUser"]["id"]);
+            $chosenBook=Book::fromId($_POST["bookId"]);
+
+            //var_dump($customer);
+            $message=$customer->buyBook($_POST["bookId"],$chosenBook->price);
+            print("<p>".$message."</p>");
+        }
+    }
+
     if (isset($_POST["debug"])) {
         print("Welcome to debug mode, this is only for the developers to try new things!");
     }
@@ -57,6 +84,7 @@
         }
         else {
             print("<div class=\"bookContainer\">");
+            print("<div class=\"rentedBooks\"><h1>Rented Books</h1>");
             foreach ($rentedBooks as $bookId) {
                 $book=Book::fromId($bookId["book_id"]);
                 print("
@@ -67,6 +95,11 @@
                 <br><br>
                 ");
             }
+            print("</div>");
+
+
+
+            
             print("</div>");
 
         }
