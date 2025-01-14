@@ -35,11 +35,9 @@
 
         <input type=\"submit\" name=\"logOut\" value=\"Log Out\" />
 
-
-        <input type=\"submit\" name=\"debug\" value=\"debug mode\" />
-
-
         </form><br><br>");
+
+
 
     if (isset($_POST["logOut"])) {
         $_SESSION=[];
@@ -71,6 +69,8 @@
         }
     }
 
+
+    //To access debug mode copypaste:  <input type=\"submit\" name=\"debug\" value=\"debug mode\" />
     if (isset($_POST["debug"])) {
         print("Welcome to debug mode, this is only for the developers to try new things!");
     }

@@ -1,0 +1,19 @@
+{
+    "name": "daw2/app_libro_composer",
+    "description": "An app to add, rent, buy, delete and view books",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Daw2\\AppLibroComposer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "guille",
+            "email": "guilleleongordo@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
