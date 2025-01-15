@@ -2,6 +2,7 @@
 
 namespace Daw2\AppLibroComposer;
 use \PDO;
+use PHPMailer\PHPMailer\PHPMailer;
 
 
 class Customer{
@@ -112,7 +113,28 @@ function buyBook($bookId,$price){
             $saleBookStmt = $con->prepare("INSERT INTO sale_book (book_id, sale_id,amount) VALUES (:book_id, :sale_id, :amount)");
             $saleBook=$saleBookStmt->execute(["book_id"=>$bookId,"sale_id"=>$saleId["id"],"amount"=>$price]);
             if ($saleBook) {
-                return "Transaction accomplished";
+                $mail=new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host="smtp.gmail.com";
+                $mail->SMTPAuth=true;
+                $mail->Username="guilleleongordo@gmail.com";
+                $mail->Password="";
+                $mail->SMTPSecure=PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port=587;
+                
+                $body= file_get_contents(__DIR__.'\..\body.html');
+                $mail->SetFrom('guilleleongordo@gmail.com', 'Digital BookShop');
+                $mail->AddAddress($this->email, "Nombre completo");
+                $mail->Subject = "Digital BookShop";
+                $mail->AltBody = "Error in the message";
+                $mail->MsgHTML($body);
+                if(!$mail->Send()) {
+                    
+                    return "Transaction accomplished, but error in email: ".$mail->ErrorInfo;
+
+                  } else {
+                    return "Transaction accomplished, you will recive the bill in your email shortly";
+                }
             }
             else {
                 return "Error in sale Book";
@@ -128,9 +150,7 @@ function buyBook($bookId,$price){
 }
 
 
-}
-
-function getCustomer($id){
+public static function getCustomer($id){
     $conObj = new DBconnection();
     $con=$conObj->getConnect();
 
@@ -140,6 +160,9 @@ function getCustomer($id){
     //var_dump($book);
     return $customer;
 }
+
+}
+
 
 
 

@@ -107,7 +107,30 @@ function getBookId($isbn){
     $id = $stmt->fetch(PDO::FETCH_ASSOC);
     //var_dump($id);
     return $id["id"];
+}
+
+public static function showAllBooks($opp){
+    $conObj = new DBconnection();
+    $con=$conObj->getConnect();
+
+    $books = $con->query("SELECT title,id,author FROM book")->fetchAll();
+
+    //var_dump($books);
+    foreach ($books as $book) {
+        print("<form action=\"#\" method=\"POST\">
+        <input type=\"submit\" name=\"chosenBook\" value=\"".$book["id"]."\"
+        <div>
+        ".
+        $book["title"]
+        .
+        "
+        </div>
+        </input>
+        <input type=\"hidden\" name=\"".$opp."\"/>
+        </form>
+        ");
     }
+}
 
 }
 
