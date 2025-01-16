@@ -114,11 +114,12 @@ function buyBook($bookId,$price){
             $saleBook=$saleBookStmt->execute(["book_id"=>$bookId,"sale_id"=>$saleId["id"],"amount"=>$price]);
             if ($saleBook) {
                 $mail=new PHPMailer(true);
+                $config = json_decode(file_get_contents(__DIR__.'\..\mailer.config.json'), true);
                 $mail->isSMTP();
                 $mail->Host="smtp.gmail.com";
                 $mail->SMTPAuth=true;
-                $mail->Username="guilleleongordo@gmail.com";
-                $mail->Password="";
+                $mail->Username=$config["user"];
+                $mail->Password=$config["password"];
                 $mail->SMTPSecure=PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port=587;
                 
