@@ -1,0 +1,25 @@
+body{
+    background-color: rgb(184, 184, 184);
+}
+
+.evento{
+    border: solid 1px black;
+    margin: 5px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.imgContainer{
+    margin-right: 10%;
+}
+
+img{
+    padding: 5px;
+}
+.infoContainer{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
