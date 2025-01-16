@@ -98,6 +98,7 @@
                 ");
             }
             print("</div>");
+            //$customer->getBuyedBooks();
             print("</div>");
 
         }

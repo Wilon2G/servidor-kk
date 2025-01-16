@@ -162,6 +162,17 @@ public static function getCustomer($id){
     return $customer;
 }
 
+
+function getBuyedBooks(){
+    $conObj = new DBconnection();
+    $con=$conObj->getConnect();
+    $stmt = $con->prepare("SELECT id FROM sale WHERE customer_id = :customer_id");
+    $stmt->execute(['customer_id' => $this->id]);
+    $salesId = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($salesId);
+}
+
+
 }
 
 
