@@ -8,6 +8,8 @@ body{
     width: fit-content;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    position: relative;
 }
 
 .imgContainer{
@@ -15,11 +17,26 @@ body{
 }
 
 img{
-    padding: 5px;
+    max-height: 550px;
 }
 .infoContainer{
     margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    width: fit-content;
+}
+
+.infoContainer > p{
+    width: fit-content;
+}
+
+.sinopsis{
+    width: 30%;
+}
+
+.edit{
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
