@@ -12,7 +12,15 @@
     
     include "./utils.php";
 
-    showAll();
+    if (isset($_POST["saveChanges"])) {
+        saveChanges($_POST["eventId"],$_POST["title"],$_POST["buyLink"],$_POST["calification"],$_POST["genre"],$_POST["duration"],$_POST["sinopsis"],$_POST["trailLink"]);
+    }
+
+    if (isset($_POST["edit"])) {
+        //var_dump($_POST["eventId"]);
+        showAll($_POST["eventId"]);
+    }
+    showAll("");
 
     ?>
 </body>
