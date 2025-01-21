@@ -12,6 +12,12 @@
     
     include "./utils.php";
 
+    //newEventForm();
+
+    if (isset($_POST["editDates"])) {
+        header("Location: ./datesManager.php?eventId=".$_POST["eventId"]);
+    }
+
     if (isset($_POST["saveChanges"])) {
         saveChanges($_POST["eventId"],$_POST["title"],$_POST["buyLink"],$_POST["calification"],$_POST["genre"],$_POST["duration"],$_POST["sinopsis"],$_POST["trailLink"]);
     }

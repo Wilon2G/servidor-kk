@@ -5,7 +5,7 @@ body{
 .evento{
     border: solid 1px black;
     margin: 5px;
-    width: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,6 +25,7 @@ img{
     flex-direction: column;
     justify-content: space-evenly;
     width: fit-content;
+    flex-wrap: wrap;
 }
 
 .infoContainer > p{
