@@ -1,5 +1,5 @@
 <?php
-include 'ejemplo.php';
+//include 'ejemplo.php';
 //$xml = simplexml_load_string($xmlstr);
 $xml = @simplexml_load_file("data.xml");
 function showAll($eventId)
@@ -97,10 +97,56 @@ function saveChanges($eventId, $title, $buyLink, $calification, $genre, $duratio
     global $xml;
     foreach ($xml->evento as $evento) {
         if ($evento->titulo["id"]==$eventId) {
+
             $evento->titulo["value"]=(empty($title )?$evento->titulo["value"]:$title);
+
+            $evento->compra=(empty($buyLink )?$evento->compra:$buyLink);
+
+            $evento->calificacion=(empty($calification )?$evento->calification:$calification);
+
+            $evento->genero=(empty($genre )?$evento->genero:$genre);
+
+            $evento->duracion=(empty($duration )?$evento->duracion:$duration);
+
+            $evento->sinopsis=(empty($sinopsis )?$evento->sinopsis:$sinopsis);
+
+            $evento->trailer=(empty($trailLink )?$evento->trailer:$trailLink);
+
+
             $xml->saveXML("data.xml");
         }
     }
+
+}
+
+function updateDate($eventId,$dateId,$newDate){
+global $xml;
+
+$dates=getDatesFromId($eventId);
+
+foreach ($dates[0] as $date) {
+    //print($date["value"]."==".$newDate."??");
+    if ($date["value"]==$newDate) {
+        return "Error, la fecha introducida ya existe en el evento";
+    }
+}
+
+$xpath = "//evento[titulo[@id='$eventId']]/fechas/fecha[@value='$dateId']";
+$fechaElement = $xml->xpath($xpath);
+
+if ($fechaElement) {
+    if (empty($newDate)) {
+        unset($fechaElement[0][0]);
+        $xml->saveXML("data.xml");
+        return "La fecha se ha eliminado con éxito"; 
+    }
+    $fechaElement[0]['value'] = $newDate;
+
+    $xml->saveXML("data.xml");
+    return "Fecha actualizada con éxito"; 
+}
+
+return "Ha ocurrido un error";
 
 }
 
