@@ -1,0 +1,23 @@
+{
+    "name": "daw2/app_libro_blade",
+    "type": "project",
+    "require": {
+        "philo/laravel-blade": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Daw2\\AppLibroBlade\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "guille",
+            "email": "guilleleongordo@gmail.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+}
