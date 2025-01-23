@@ -12,7 +12,21 @@
     
     include "./utils.php";
 
-    //newEventForm();
+    if (isset($_POST["openEventForm"])) {
+        newEventForm();
+    }
+    else {
+        newEventButton();
+    }
+    
+
+    if (isset($_POST["newEvent"])) {
+        createNewEvent($_POST["title"],$_POST["buyLink"],$_POST["calification"],$_POST["genre"],$_POST["duration"],$_POST["sinopsis"],$_POST["trailLink"],$_POST["caratula"]);
+    }
+
+    if (isset($_POST["deleteEvent"])) {
+        deleteEvent($_POST["eventId"]);
+    }
 
     if (isset($_POST["editDates"])) {
         header("Location: ./datesManager.php?eventId=".$_POST["eventId"]);
@@ -26,6 +40,7 @@
         //var_dump($_POST["eventId"]);
         showAll($_POST["eventId"]);
     }
+
     showAll("");
 
     ?>

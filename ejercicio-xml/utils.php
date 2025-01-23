@@ -45,8 +45,8 @@ function editPrint($evento){
             . "<lable>Link al tráiler: 
             <input type=\"text\" name=\"trailLink\"  value=\"" . trim($evento->trailer) . "\" ></lable>"
 
-            . "<lable>
-            <input type=\"submit\" name=\"editDates\"  value=\"Editar fechas\" ></lable>"
+            /* . "<lable>
+            <input type=\"submit\" name=\"editDates\"  value=\"Editar fechas\" ></lable>" */
         );
         print("
         <input type=\"hidden\" name=\"eventId\" value=\"".$evento->titulo["id"]."\">
@@ -87,13 +87,15 @@ function normalPrint($evento){
         print("<form action=\"#" . $evento->titulo["id"] . "\" method=\"POST\">
         <input type=\"hidden\" name=\"eventId\" value=\"".$evento->titulo["id"]."\">
         <input type=\"submit\" class=\"edit\" name=\"edit\" value=\"Editar\"></input>
+        <input type=\"submit\" class=\"cancel\" name=\"deleteEvent\" value=\"Eliminar\"></input>
+
         </form>
         ");
 
         print ("</div><br>");
 }
 
-function saveChanges($eventId, $title, $buyLink, $calification, $genre, $duration, $sinopsis, $trailLink ){
+function saveChanges($eventId, $title, $buyLink, $calification, $genre, $duration, $sinopsis, $trailLink){
     global $xml;
     foreach ($xml->evento as $evento) {
         if ($evento->titulo["id"]==$eventId) {
@@ -115,6 +117,55 @@ function saveChanges($eventId, $title, $buyLink, $calification, $genre, $duratio
 
             $xml->saveXML("data.xml");
         }
+    }
+
+}
+
+function createNewEvent($title, $buyLink, $calification, $genre, $duration, $sinopsis, $trailLink,$caratula ){
+    global $xml;
+
+    $newEvent= $xml->addChild("evento");
+    $newEvent->titulo["value"]=$title;
+    $newEvent->titulo["id"]=rand(0,10000);
+    $newEvent->titulo["uid"]=rand(0,10000);
+
+
+
+    $newEvent->addChild('compra', $buyLink);
+    $newEvent->addChild('caratula', $caratula);
+    $newEvent->addChild('calificacion', $calification);
+    $newEvent->addChild('genero', $genre);
+    $newEvent->addChild('duracion', $duration);
+    $newEvent->addChild('sinopsis', $sinopsis);
+    $newEvent->addChild('trailer', $trailLink);
+
+    $fechas = $newEvent->addChild('fechas');
+    $fechaEvento = $fechas->addChild('fecha');
+    $fechaEvento['value'] = "20/20/2020";
+    
+    // Crear la sesión en esa fecha
+    $sesiones = $fechaEvento->addChild('sesiones');
+    $salaEvento = $sesiones->addChild('sala', "99:99");
+    $salaEvento['value'] = "99";
+
+    $xml->saveXML("data.xml");
+
+}
+
+function deleteEvent($eventId){
+    global $xml;
+
+    $xpath="//evento[titulo[@id=".$eventId."]]";
+    $event=$xml->xpath($xpath);
+
+    if ($event) {
+        unset($event[0][0]);
+        $xml->saveXML("data.xml");
+
+    }
+    else {
+        throw new Exception("Error deleting event", 1);
+        
     }
 
 }
@@ -151,11 +202,51 @@ return "Ha ocurrido un error";
 }
 
 function newEventForm(){
-    print("<div class=\"eventForm\"><h1>Añadir Nuevo Evento:</h1>");
+    print("<div class=\"evento\"><h1>Añadir Nuevo Evento:</h1>");
+
+    print ("<form action=\"#\" method=\"POST\" class=\"infoContainer\">");
+    print ("
+    <lable>Título: 
+        <input type=\"text\" name=\"title\"  required /></lable> 
+        <lable>Carátula:
+        <input type=\"text\" name=\"caratula\" required /></lable>
+        "
+        
+
+        . "<lable>Link a compra: 
+        <input type=\"text\" width=\"150px\" name=\"buyLink\" required /></lable>"
+
+        . "<lable>Calificación: 
+        <input type=\"text\" name=\"calification\"  required /></lable>"
+
+        . "<lable>Género: 
+        <input type=\"text\" name=\"genre\" required /> </lable>"
+
+        . "<lable>Duración: 
+        <input type=\"text\" name=\"duration\" required /></lable>"
+
+        . "<lable>Sinopsis: 
+        <textarea cols=\"200\" rows=\"6\" class=\"sinopsis\" name=\"sinopsis\" required > </textarea> </lable>"
+
+        . "<lable>Link al tráiler: 
+        <input type=\"text\" name=\"trailLink\"  required ></lable>"
+
+        /* . "<lable>
+        <input type=\"submit\" name=\"editDates\"  value=\"Editar fechas\" ></lable>" */
+    );
+    print("
+    <input type=\"submit\" class=\"edit\" name=\"newEvent\" value=\"Guardar\"></input>
+    </form>
+    <form action=\"#\" method=\"POST\" class=\"infoContainer\">
+    <input type=\"submit\" class=\"cancel\" name=\"cancel\" value=\"Cancelar\"></input>
+    </form>
+    ");
+
+    print ("</div><br>");
 
 
 
-    print("</div>");
+   
 }
 
 function getTitleFromId($id){
@@ -186,4 +277,11 @@ function getDatesFromId($id){
     else {
         return null;
     }
+}
+
+function newEventButton(){
+    print("<form action=\"#\" method=\"POST\" >
+    <input class=\"newEventButton\" type=\"submit\" name=\"openEventForm\" value=\"Nuevo evento\" />
+    </form>
+    ");
 }
