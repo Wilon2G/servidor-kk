@@ -68,6 +68,8 @@
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-xml/\"><button>Ejercicio XML</button></a>");
             print("<br>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../app_libro_blade/\"><button>App libro Blade</button></a>");
+            print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
             // http://localhost/dashboard/

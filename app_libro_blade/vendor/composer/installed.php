@@ -3,7 +3,7 @@
         'name' => 'daw2/app_libro_blade',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8f4a8cbb50e11b63a67f9be73b77739c63827268',
+        'reference' => '1b81a3360db181d723f35bb6e18279cd9ff252bf',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'daw2/app_libro_blade' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8f4a8cbb50e11b63a67f9be73b77739c63827268',
+            'reference' => '1b81a3360db181d723f35bb6e18279cd9ff252bf',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -201,6 +201,15 @@
             'replaced' => array(
                 0 => '<5.5.33',
             ),
+        ),
+        'windwalker/edge' => array(
+            'pretty_version' => '3.5.23',
+            'version' => '3.5.23.0',
+            'reference' => 'f6035a25b2e9f7b3a734730df8953787157e2061',
+            'type' => 'windwalker-package',
+            'install_path' => __DIR__ . '/../windwalker/edge',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
     ),
 );

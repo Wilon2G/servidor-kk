@@ -13,6 +13,10 @@ class ComposerStaticInite76a0d6f80f4e6481753323007ab5a5e
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Windwalker\\Edge\\' => 16,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -47,6 +51,10 @@ class ComposerStaticInite76a0d6f80f4e6481753323007ab5a5e
     );
 
     public static $prefixDirsPsr4 = array (
+        'Windwalker\\Edge\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/windwalker/edge',
+        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
