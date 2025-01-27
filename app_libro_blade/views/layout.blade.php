@@ -7,10 +7,12 @@
 </head>
 <body>
     <header>
-        @yield("encabezao");
+        <h1>
+        @yield("encabezado")
+        </h1>
     </header>
     <main>
-        @yield("contenido");
+        @yield("contenido")
     </main>
 </body>
 </html>
