@@ -14,9 +14,9 @@
     $edge = new Edge($loader);
     //echo $edge->render('<h1>{{$title}}</h1>',array('title'=>'Hello World'));
     
-    echo $edge->render('prueba', [
+    echo $edge->render('libros', [
         'titulo' => 'Mi titulo',
-        'encabezado' => 'Mi encabezado'
+        'contenido' => 'Aquí van los libros'
     ]);
 
 
