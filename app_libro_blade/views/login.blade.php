@@ -9,11 +9,12 @@
 @endsection
 
 @section("contenido")
-<div>
-    <ul>
-        @foreach ($libros as $libro)
-            <li>{{$libro['title']}}</li>
-        @endforeach
-    </ul>
-</div>
+<form action="#" method="POST">
+    <label>
+        Username:
+        <input type="text" name="userName" required>
+    </label>
+    
+    
+</form>
 @endsection
