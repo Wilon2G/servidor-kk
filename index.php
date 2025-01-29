@@ -70,7 +70,7 @@
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../app_libro_blade/\"><button>App libro Blade</button></a>");
             print("<br>");
-            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../laravel-diez/public/\"><button>App libro Laravel</button></a>");
+            print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../laravel-diez-01/public/\"><button>App libro Laravel</button></a>");
             print("<br>");
             print ("<a href=\"http://localhost".$_SERVER["PHP_SELF"]."/../ejercicio-formulario/index-form.php\"><button>Ejercicio formulario</button></a></div>");
         
