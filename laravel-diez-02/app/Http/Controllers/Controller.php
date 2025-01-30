@@ -10,3 +10,5 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 }
+
+//Para crear controladores ejecutamos en la terminal --> php artisan make:controller NombreDelControlador
