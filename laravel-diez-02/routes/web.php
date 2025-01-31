@@ -24,7 +24,9 @@ Route::get('/libros', [BookController::class,"index"]);
 
 /*
 Métodos estáticos de la clase Route:
-view() --> Nos permite pintar una vista directamente saltándonos el controlador, recibe la ruta y la vista ('/ruta',"nombreDeLaVista")
+view() -->  Nos permite pintar una vista directamente saltándonos el controlador, recibe la ruta y la vista ('/ruta',"nombreDeLaVista").
+            Si la ruta a la vista está en una carpeta dentro de views, no se utilizan barras en la ruta, se usan puntos.
+
 get() --> Recibe la ruta y el controlador que utiliza ('/ruta/que/queremos, [controlador::class,"funcion"]')
 post()
 put()
