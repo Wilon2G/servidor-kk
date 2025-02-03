@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CustomerController;
+
 
 
 /*
@@ -15,9 +17,7 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CustomerController::class,"index"]);
 
 Route::get('/libros', [BookController::class,"index"]);
 
