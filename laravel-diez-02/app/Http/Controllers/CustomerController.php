@@ -16,9 +16,8 @@ class CustomerController extends Controller
         if (!$this->userIsLogged()) {
             return view("logInForm",['titulo'=>"Log In",'encabezado'=>"Welcome To The Digital BookShop"]);
         }
-
+        
         return view('welcome');
     }
-
    
 }
