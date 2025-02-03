@@ -1,15 +1,7 @@
-@extends("layout")
+@extends("layout.layout")
 
-@section("titulo")
-    {{$titulo}}
-@endsection
-
-@section("encabezado")
-    <h1>{{$encabezado}}</h1>
-@endsection
-
-@section("contenido")
-<h3>Log In!</h3>
+@section("content")
+<h1>Log In!</h1>
 <form action="#" method="POST">
     <label>
         Username:
@@ -22,5 +14,5 @@
     </label>
     <br>
     <input type="submit" name="logIn" >
-</form> 
+</form>
 @endsection

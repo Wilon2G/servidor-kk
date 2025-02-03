@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
+//Para nigrar la base de datos ejecutamos: php artisan migrate
+//Para poblar la base de datos ejecutamos:
+
 class DatabaseSeeder extends Seeder
 {
     public function run()

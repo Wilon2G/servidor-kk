@@ -12,3 +12,5 @@ class Controller extends BaseController
 }
 
 //Para crear controladores ejecutamos en la terminal --> php artisan make:controller NombreDelControlador
+
+

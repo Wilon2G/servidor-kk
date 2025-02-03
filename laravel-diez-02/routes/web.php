@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CustomerController;
-
-
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GeneralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +16,14 @@ use App\Http\Controllers\CustomerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/*
+Para devolver una vista directamente podemos poner una función:
+Route::get('/', function(){
+    return view('logInForm');
+});
+*/
 
-Route::get('/', [CustomerController::class,"index"]);
+Route::get('/', [DashboardController::class,"index"]);
 
 Route::get('/libros', [BookController::class,"index"]);
 
@@ -33,7 +39,9 @@ put()
 delete()
 patch()
 
-
-
+Plugins para Laravel:
+- PHP Intelephense
+- Laravel Blade Snippets
+- Laravel Extension Pack
 
 */

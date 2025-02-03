@@ -29,3 +29,8 @@ setcookie("name",$name,time()+60*60*24*1);
 </body>
 </html>
 
+<!-- 
+Cannot validate since a PHP installation could not be found. Use the setting 'php.validate.executablePath' to configure the PHP executable.
+
+
+ -->
