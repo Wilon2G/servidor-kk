@@ -1,11 +1,12 @@
 @extends("layout.layout")
 
 @section("content")
-<h1>Welcome {{$loggedIn?session('user')['username']:"User"}}!</h1>
-<h3>To the digital Bookshop</h3>
-<div style="display: flex;">
-    
+<header style="margin-bottom: 2%;">
+<h1 style="text-align: center;" >Welcome {{$loggedIn?session('user')['username']:"User"}}!</h1>
+<h3 style="text-align: center;" >To the digital Bookshop</h3>
+</header>
 
-</div>
+
+@include("layout.menu",["user"=>$loggedIn])
 
 @endsection
