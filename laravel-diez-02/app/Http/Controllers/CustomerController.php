@@ -14,10 +14,17 @@ class CustomerController extends Controller
     public function index(){
 
         if (!$this->userIsLogged()) {
-            return view("logInForm");
+            return view("forms.logInForm");
         }
 
-        return view('welcome');
+        return view('layout.main');
+    }
+
+    public function register(){
+        if ($this->userIsLogged()) {
+            # code...
+        }
+        return view("forms.registerForm");
     }
 
 }

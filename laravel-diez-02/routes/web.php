@@ -25,7 +25,14 @@ Route::get('/', function(){
 
 Route::get('/', [DashboardController::class,"index"]);
 
-Route::get('/libros', [BookController::class,"index"]);
+Route::get('/login', [CustomerController::class,"index"])->name("login");
+
+Route::get('/register', [CustomerController::class,"register"])->name("register");
+
+Route::get('/books', [BookController::class,"index"])->name("books");
+
+Route::get('/frog', [GeneralController::class,"frog"])->name("secretFrog");
+
 
 
 /*

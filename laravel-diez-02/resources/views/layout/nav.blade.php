@@ -11,13 +11,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                        <a class="nav-link active" aria-current="page" href={{route("login")}}>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
+                        <a class="nav-link" href={{route("register")}}>Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/books">Books</a>
+                        <a class="nav-link" href={{route("books")}}>Books</a>
                     </li>
                 </ul>
             </div>
