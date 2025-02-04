@@ -8,12 +8,12 @@ class DashboardController extends Controller
 {
     public function index(){
 
-        
+
         return view("layout.main",['loggedIn'=>$this->userIsLogged()]);
-        
+
     }
 
     public function userIsLogged(){
-        return session()->has('user');
+        return session()->has('customer_id');
     }
 }

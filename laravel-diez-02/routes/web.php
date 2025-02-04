@@ -23,11 +23,15 @@ Route::get('/', function(){
 });
 */
 
-Route::get('/', [DashboardController::class,"index"]);
+Route::get('/', [DashboardController::class,"index"])->name('dashboard');
 
 Route::get('/login', [CustomerController::class,"index"])->name("login");
 
-Route::get('/register', [CustomerController::class,"register"])->name("register");
+Route::get('/logout', [CustomerController::class,"logout"])->name("logout");
+
+Route::post('/login/validation', [CustomerController::class,"validateUser"])->name("login.validate");
+
+Route::get('/register', [CustomerController::class,"registerUser"])->name("register");
 
 Route::get('/books', [BookController::class,"index"])->name("books");
 

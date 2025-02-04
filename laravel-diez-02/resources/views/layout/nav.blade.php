@@ -19,6 +19,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href={{route("books")}}>Books</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={{route("logout")}}>Log Out</a>
+                    </li>
                 </ul>
             </div>
         </div>
