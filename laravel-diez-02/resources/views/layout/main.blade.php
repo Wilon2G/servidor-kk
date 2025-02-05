@@ -11,3 +11,4 @@
 @include("layout.menu",["user"=>$loggedIn])
 
 @endsection
+{{-- kk --}}
