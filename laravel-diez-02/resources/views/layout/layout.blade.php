@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="EN">
+<html lang="EN"
+style="background: url('{{ asset('images/navbar-bg.jpg') }}') center; display: flex; justify-content: center;" 
+>
 
 <head>
     <meta charset="utf-8">
@@ -14,7 +16,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<body
+style="background-color: white; min-height: 100vh; width: 90%; margin-top: .5rem;"
+>
 
     @include('layout.nav')
 

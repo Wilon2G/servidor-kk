@@ -29,11 +29,12 @@ class CustomerController extends Controller
 
         if ($customer && Hash::check($password, $customer->password)) {
             session(['customer_id' => $customer->id]);
+            session(['customer_name' => $customer->firstname]);
 
             return redirect()->route('dashboard')->with("success","Welcome!");
         }
 
-        return back()->with("error","Incorrect email or password");
+        return back()->with("error","Incorrect email or password, try to register first!");
         # return redirect()->route('dashboard'); Para redirigir
     }
 
