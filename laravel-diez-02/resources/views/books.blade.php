@@ -1,9 +1,11 @@
 @extends("layout.layout")
 
+
 @section("content")
 <div class="container mt-4">
     <h1 class="text-center text-primary mb-4">📚 Check Out Our Library! 📚</h1>
-
+    @include("message.success")
+    @include("message.error")
     <div class="row">
         @foreach ($books as $book)
             <div class="col-md-4 mb-4">
@@ -20,9 +22,9 @@
                         <!-- Botón Rent con condicional -->
                         @if ($user)  
                             @if (in_array($book->id,$user->toArray()))
-                            <a href="{{ route('login') }}" class="btn btn-secondary btn-sm w-100">✅ Already in your collection!</a>
+                            <a href="{{ route('login') }}" class="btn btn-secondary btn-sm w-100">✅ Already rented!</a>
                             @else
-                            <a href="{{ route('rentBook') }}" class="btn btn-warning btn-sm w-100">📖 Rent</a>
+                            <a href="{{ route('rentBook', ['id' => $book->id]) }}" class="btn btn-warning btn-sm w-100">📖 Rent</a>
                             @endif
                         @else
                             <a href="{{ route('login') }}" class="btn btn-secondary btn-sm w-100">🔐 Rent</a>

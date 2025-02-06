@@ -39,7 +39,7 @@ Route::get('/frog', [GeneralController::class,"frog"])->name("secretFrog");
 
 Route::get('/userBooks', [BookController::class,"userBooks"])->name("userBooks");
 
-Route::get('/rentBook', [BookController::class,"rent"])->name("rentBook");
+Route::get('/rentBook/{id}', [BookController::class,"rent"])->name("rentBook");
 
 /*
 Métodos estáticos de la clase Route:
@@ -62,8 +62,8 @@ Plugins para Laravel:
 ======================================================================
 
 PASAR PARÁMETROS POR URL
-Route::get('/example/(id)', [BookController::class,"function"])->name("example");
-Route::get('/example/(id?)', [BookController::class,"functionexample"])->name("example"); En este caso sería opcional
+Route::get('/example/{id}', [BookController::class,"function"])->name("example");
+Route::get('/example/{id}', [BookController::class,"functionexample"])->name("example"); En este caso sería opcional
 
 En la función del controlador accedemos:
 public function functionexample($id="valorPorDefecto"){
