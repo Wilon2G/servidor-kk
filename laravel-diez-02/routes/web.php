@@ -37,7 +37,9 @@ Route::get('/books', [BookController::class,"index"])->name("books");
 
 Route::get('/frog', [GeneralController::class,"frog"])->name("secretFrog");
 
+Route::get('/userBooks', [BookController::class,"userBooks"])->name("userBooks");
 
+Route::get('/rentBook', [BookController::class,"rent"])->name("rentBook");
 
 /*
 Métodos estáticos de la clase Route:
@@ -50,9 +52,24 @@ put()
 delete()
 patch()
 
+=======================================================================
+
 Plugins para Laravel:
 - PHP Intelephense
 - Laravel Blade Snippets
 - Laravel Extension Pack
+
+======================================================================
+
+PASAR PARÁMETROS POR URL
+Route::get('/example/(id)', [BookController::class,"function"])->name("example");
+Route::get('/example/(id?)', [BookController::class,"functionexample"])->name("example"); En este caso sería opcional
+
+En la función del controlador accedemos:
+public function functionexample($id="valorPorDefecto"){
+
+return $id
+}
+
 
 */
