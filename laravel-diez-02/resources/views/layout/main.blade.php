@@ -8,11 +8,15 @@
 
 @include("message.success")
 @include("message.error")
-@include("layout.menu",["user"=>$loggedIn])
-
+@include("layout.menu",["loggedIn"=>$loggedIn])
 @include("user.userBooks")
+@include("books")
+
 
 @endsection
 {{-- kk
 wee
+
+
+<!-- @include("books") -->
 --}}
