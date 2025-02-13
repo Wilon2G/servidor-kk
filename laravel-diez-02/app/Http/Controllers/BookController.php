@@ -15,8 +15,7 @@ class BookController extends Controller
         $books= Book::all();
 
         //dump($books);
-
-        return view('books',["books"=>$books,"user"=>$this->userBooksId()]);
+        return view( "layout.main",['loggedIn'=>$this->userIsLogged(),"books"=>$books,"user"=>$this->userBooksId(),"menu"=>1]);
     }
 
     public function userBooksId(){
@@ -39,9 +38,14 @@ class BookController extends Controller
         
         $this->addSubStock($id,-1);
 
+        BorrowedBook::create([
+            'book_id' => $id,          
+            'customer_id' => session("customer_id"),      
+            'start' => now(),        
+            'end' => now()->addDays(7), 
+        ]);
 
-
-        return back()->with("success","kk");
+        return back()->with("success","Book rented!");
     }
 
     public function addSubStock($bookId,$addOrSub){
