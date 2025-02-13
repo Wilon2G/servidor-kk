@@ -10,8 +10,7 @@ class DashboardController extends Controller
     public function index(){
         $books= Book::all();
 
-        return view("layout.main",['loggedIn'=>$this->userIsLogged(),"books"=>$books,"user"=>$this->userBooksId()]);
-
+        return view("layout.main",['loggedIn'=>$this->userIsLogged(),"books"=>$books,"user"=>$this->userBooksId(),"menu"=>1]);
     }
 
     public function userIsLogged(){

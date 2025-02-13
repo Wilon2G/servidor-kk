@@ -39,6 +39,8 @@ Route::get('/frog', [GeneralController::class,"frog"])->name("secretFrog");
 
 Route::get('/userBooks', [BookController::class,"userBooks"])->name("userBooks");
 
+Route::get('/purchases', [BookController::class,"purchases"])->name("purchases");
+
 Route::get('/rentBook/{id}', [BookController::class,"rent"])->name("rentBook");
 
 /*

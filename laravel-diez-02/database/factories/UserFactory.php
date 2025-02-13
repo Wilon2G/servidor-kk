@@ -42,3 +42,19 @@ class UserFactory extends Factory
         ]);
     }
 }
+
+/*
+Faker:
+En factory podemos usar cadenas y números aleatorios o podemos usar faker para que los datos tengan más sentido.
+Para hacer esotenemos que usar la función fake()
+Fake() tiene muchos métodos:
+- name()
+- sentence()
+- email()
+- address()
+- lastName()
+- numberBetween()
+
+
+
+*/

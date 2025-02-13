@@ -8,10 +8,10 @@
 
 @include("message.success")
 @include("message.error")
-@include("layout.menu",["loggedIn"=>$loggedIn])
+@include("layout.menu")
 @include("user.userBooks")
 @include("books")
-
+@include("user.purchases")
 
 @endsection
 {{-- kk

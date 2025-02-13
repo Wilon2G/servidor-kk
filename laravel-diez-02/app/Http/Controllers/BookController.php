@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\BorrowedBook;
+use App\Models\Sale;
+use App\Models\SaleBook;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -59,6 +61,27 @@ class BookController extends Controller
         }
     }
 
+    public function userIsLogged(){
+        return session()->has('customer_id');
+    }
+
+    public function userPurchasesId(){
+        if (!session()->has('customer_id')) {
+            return null;
+        }
+        $customerId=session("customer_id");
+        
+        $saleId=Sale::where("customer_id",$customerId)->pluck("id");
+        
+        if (!$saleId) {
+            return null;
+        }
+        $customerPurchasesId=SaleBook::where("sale_id",$saleId)->pluck("book_id");
+        //dd($customerPurchasesId);
+        return $customerPurchasesId;
+
+    }
+
     public function userBooks(){
 
         $customerBooksId =$this->userBooksId();
@@ -66,10 +89,22 @@ class BookController extends Controller
         $customerBooks= Book::whereIn("id",$customerBooksId)->get();
 
         //dd($customerBooks);
+        return view("layout.main",['loggedIn'=>$this->userIsLogged(),"menu"=>2,"userBooks"=>$customerBooks]);
 
-        return redirect()->route('dashboard')->with("userBooks",$customerBooks);
+        //return redirect()->route('dashboard')->with("userBooks",$customerBooks);
         
     }
+
+    public function purchases(){
+
+        $customerPurchasesId=$this->userPurchasesId();
+        
+        $customerBooks= Book::whereIn("id",$customerPurchasesId)->get();
+
+
+        return view("layout.main",['loggedIn'=>$this->userIsLogged(),"menu"=>3,"userBooks"=>$customerBooks]);
+    }
+
 }
 
 
