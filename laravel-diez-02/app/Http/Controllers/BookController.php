@@ -48,6 +48,21 @@ class BookController extends Controller
         return back()->with("success","Book rented!");
     }
 
+
+    public function returnBook($id){
+        $customerBooksId=$this->userBooksId()->toArray();
+        if (!in_array($id,$customerBooksId)) {
+            return back()->with("error","Error, book chosen is not currentlyrented, please recharge the page");
+        }
+
+        $this->addSubStock($id,1);
+
+
+        return back()->with("success",$id);
+    }
+
+
+
     public function addSubStock($bookId,$addOrSub){
         $targetBook= Book::where("id",$bookId)->first();
 

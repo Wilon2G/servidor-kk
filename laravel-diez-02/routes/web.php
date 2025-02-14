@@ -43,6 +43,9 @@ Route::get('/purchases', [BookController::class,"purchases"])->name("purchases")
 
 Route::get('/rentBook/{id}', [BookController::class,"rent"])->name("rentBook");
 
+Route::get('/returnBook/{id}', [BookController::class,"returnBook"])->name("returnBook");
+
+
 /*
 Métodos estáticos de la clase Route:
 view() -->  Nos permite pintar una vista directamente saltándonos el controlador, recibe la ruta y la vista ('/ruta',"nombreDeLaVista").

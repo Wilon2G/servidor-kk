@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">{{ $book->title }}</h5>
                             <p class="card-text text-muted">Autor: {{ $book->author ?? 'Desconocido' }}</p>
-                            <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm">Return</a>
+                            <a href="{{ route('returnBook',['id'=>$book->id]) }}" class="btn btn-primary btn-sm">Return</a>
                         </div>
                     </div>
                 </div>
