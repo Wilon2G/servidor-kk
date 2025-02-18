@@ -56,9 +56,15 @@ class BookController extends Controller
         }
 
         $this->addSubStock($id,1);
+        $customerId=session("customer_id");
+        $borrowedBook= BorrowedBook::where("book_id",$id)->where("customer_id",$customerId);
+        if (!$borrowedBook) {
+            return back()->with("error","Error in database, book or customer don't exist");
+        }
 
+        $borrowedBook->delete();
 
-        return back()->with("success",$id);
+        return back()->with("success","Book returned successfully");
     }
 
 
@@ -91,14 +97,13 @@ class BookController extends Controller
         $customerId=session("customer_id");
         
         $saleId=Sale::where("customer_id",$customerId)->pluck("id");
-        
-        if (!$saleId) {
+        //dd($saleId);
+        if ( sizeof($saleId)===0 ) {
             return null;
         }
         $customerPurchasesId=SaleBook::where("sale_id",$saleId)->pluck("book_id");
         //dd($customerPurchasesId);
         return $customerPurchasesId;
-
     }
 
     public function userBooks(){
@@ -117,12 +122,47 @@ class BookController extends Controller
     public function purchases(){
 
         $customerPurchasesId=$this->userPurchasesId();
+
+        if ($customerPurchasesId===null) {
+            return back()->with("error","You don't have books yet!");
+        }
         
         $customerBooks= Book::whereIn("id",$customerPurchasesId)->get();
 
 
         return view("layout.main",['loggedIn'=>$this->userIsLogged(),"menu"=>3,"userBooks"=>$customerBooks]);
     }
+
+    public function addBook(){
+        $title=request()->get("title","");
+        $isbn=request()->get("isbn","");
+        $author=request()->get("author","");
+        $stock=request()->get("stock","");
+        $price=request()->get("price","");
+
+        Book::create([
+            "title"=>$title,
+            "author"=>$author,
+            "ISBN"=>$isbn,
+            "stock"=>$stock,
+            "price"=>$price,
+            "created_at"=>now()
+        ]);
+
+        return back()->with("success","Book added!");
+
+    }
+
+    public function deleteBook($id){
+
+        $book=Book::select()->where(["id"=>$id]);
+
+        //dd($book);
+        $book->delete();
+
+        return back()->with("success","Book deleted successfully");
+    }
+
 
 }
 

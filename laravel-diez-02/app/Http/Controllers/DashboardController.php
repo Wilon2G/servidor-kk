@@ -13,6 +13,10 @@ class DashboardController extends Controller
         return view( "layout.main",['loggedIn'=>$this->userIsLogged(),"books"=>$books,"user"=>$this->userBooksId(),"menu"=>1]);
     }
 
+    public function control(){
+        return view( "layout.main",['loggedIn'=>$this->userIsLogged(),"user"=>$this->userBooksId(),"menu"=>5]);
+    }
+
     public function userIsLogged(){
         return session()->has('customer_id');
     }

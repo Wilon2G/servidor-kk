@@ -45,6 +45,11 @@ Route::get('/rentBook/{id}', [BookController::class,"rent"])->name("rentBook");
 
 Route::get('/returnBook/{id}', [BookController::class,"returnBook"])->name("returnBook");
 
+Route::get('/control', [DashboardController::class,"control"])->name("control");
+
+Route::post('/book/add', [BookController::class,"addBook"])->name("book.add");
+
+Route::get('/book/delete/{id}', [BookController::class,"deleteBook"])->name("book.delete");
 
 /*
 Métodos estáticos de la clase Route:

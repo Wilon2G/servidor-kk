@@ -29,6 +29,7 @@ class CustomerController extends Controller
 
         if ($customer && Hash::check($password, $customer->password)) {
             session(['customer_id' => $customer->id]);
+            session(['customer_type' => $customer->type]);
             session(['customer_name' => $customer->firstname]);
 
             return redirect()->route('dashboard')->with("success","Welcome!");

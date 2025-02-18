@@ -12,6 +12,9 @@
 @include("user.userBooks")
 @include("books")
 @include("user.purchases")
+@include("control")
+
+
 
 @endsection
 {{-- kk
