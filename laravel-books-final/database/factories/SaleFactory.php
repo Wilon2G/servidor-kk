@@ -1,24 +1,25 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Sale;
-use App\Models\Book;
+use App\Models\Customer;
 
-class SaleFactory extends Seeder
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Sale>
+ */
+class SaleFactory extends Factory
 {
-    public function run()
-    {
-        // Crear 10 ventas con un cliente aleatorio sin faker porque obv no tiene sentido usar faker aquí
-        Sale::factory(10)->create()->each(function ($sale) {
-            // Obtener entre 1 y 3 libros aleatorios
-            $books = Book::inRandomOrder()->limit(rand(1, 3))->get();
+    protected $model = Sale::class;
 
-            // Asignar libros a la venta con cantidades aleatorias
-            foreach ($books as $book) {
-                $sale->books()->attach($book->id, ['amount' => rand(1, 5)]);
-            }
-        });
+    public function definition(): array
+    {
+        return [
+            'customer_id' => Customer::factory(), // Genera un cliente aleatorio
+            'date' => $this->faker->dateTimeThisYear(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
     }
 }
