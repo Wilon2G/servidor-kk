@@ -9,6 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+       //dd(session()->all());
         $customer = auth()->user();
         $books=Book::all();
 

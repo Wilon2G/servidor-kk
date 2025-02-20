@@ -22,13 +22,13 @@ class LoginController extends Controller
 
         if (Auth::attempt(["email"=>$email,"password"=>$password])) {
             // Autenticación exitosa
-            session()->regenerate(); // Importante por seguridad!!!
-
-            return back()->with("success","Login correcto");
+            //session()->regenerate(); // Importante por seguridad!!!
+            
+            return back()->with("success","WEEEEEEEEEEEEEE");
         }
 
         // Si falla la autenticación
-        return back()->;
+        return back()->with("error","Incorrect user or password 😕");
 
     }
 

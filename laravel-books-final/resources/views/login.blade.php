@@ -2,9 +2,11 @@
 
 @section("content")
 <h1>Log In!</h1>
+
 @include("message.error")
 @include("message.success")
-<form action="{{ route("login/validate") }}" method="POST">
+
+<form action="{{ route("login.validate") }}" method="POST">
     @csrf
     <label>
         Email:
