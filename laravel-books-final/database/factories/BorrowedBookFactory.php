@@ -20,8 +20,6 @@ class BorrowedBookFactory extends Factory
             'rentedAt' => $rentedAt,
             'dueTo' => (clone $rentedAt)->modify('+1 month'), // Fecha de devolución 1 mes después
             'returnedAt' => $this->faker->optional(0.7)->dateTimeBetween($rentedAt, (clone $rentedAt)->modify('+1 month')), // Con esto falseo que aprox el 70% de los libros se han devuelto
-            'created_at' => now(),
-            'updated_at' => now(),
         ];
     }
 }

@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
     use HasFactory;
 
@@ -24,6 +25,11 @@ class Customer extends Model
         'type' => 'string',
     ];
 
+    public function getAuthIdentifierName()
+    {
+        return 'email';
+    }
+
     public $timestamps = true;
 
     /**
@@ -39,7 +45,9 @@ class Customer extends Model
      */
     public function borrowedBooks()
     {
-        return $this->hasMany(BorrowedBook::class);
+        return $this->belongsToMany(Book::class, 'borrowed_books', 'customer_id', 'book_id')
+                    ->withPivot(['rentedAt', 'dueTo', 'returnedAt'])
+                    ->withTimestamps();
     }
 
     /**
@@ -47,6 +55,7 @@ class Customer extends Model
      */
     public function isAdmin(): bool
     {
-        return $this->type === 'admin';
+        return $this->type === 'admin' ? true : false;
     }
+
 }
