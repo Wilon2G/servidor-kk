@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -9,11 +10,12 @@ class IndexController extends Controller
 {
     public function index()
     {
-       //dd(session()->all());
-        $customer = auth()->user();
+        $customer = Auth::user();
         $books=Book::all();
+        //dd($customer);
 
-        return view("main.library",["customer"=>$customer,"books"=>$books]);
+        return view("test");
+        //return view("main.library",["customer"=>$customer,"books"=>$books]);
     }
 
     public function profile()

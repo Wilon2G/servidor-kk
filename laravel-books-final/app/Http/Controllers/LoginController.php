@@ -19,12 +19,13 @@ class LoginController extends Controller
         $email = request()->get("email", "");
         $password = request()->get("password", "");
 
-
         if (Auth::attempt(["email"=>$email,"password"=>$password])) {
             // Autenticación exitosa
-            //session()->regenerate(); // Importante por seguridad!!!
-            
-            return back()->with("success","WEEEEEEEEEEEEEE");
+            session()->regenerate();
+
+            //dd($customer);
+
+            return redirect()->route("index");
         }
 
         // Si falla la autenticación
