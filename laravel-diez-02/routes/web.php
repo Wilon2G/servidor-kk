@@ -31,6 +31,8 @@ Route::get('/logout', [CustomerController::class,"logout"])->name("logout");
 
 Route::post('/login/validation', [CustomerController::class,"validateUser"])->name("login.validate");
 
+Route::post('/register/validation', [CustomerController::class,"validateRegister"])->name("register.validate");
+
 Route::get('/register', [CustomerController::class,"registerUser"])->name("register");
 
 Route::get('/books', [BookController::class,"index"])->name("books");
