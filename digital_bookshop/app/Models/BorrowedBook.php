@@ -40,8 +40,8 @@ class BorrowedBook extends Model
     {
         // Buscar los alquileres activos (libros que no han sido devueltos)
         return self::where('customer_id', $customerId)
-                    ->whereNull('returnedAt') // Solo los libros que no han sido devueltos
-                    ->with('book') // Cargar la relación con el libro
-                    ->get();
+            ->whereNull('returnedAt') // Solo los libros que no han sido devueltos
+            ->with('book') // Cargar la relación con el libro
+            ->get();
     }
 }

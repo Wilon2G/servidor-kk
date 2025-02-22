@@ -13,8 +13,6 @@ class CustomerSeeder extends Seeder
      */
     public function run(): void
     {
-        Customer::factory()->count(15)->create();
-
         //Creamos al admin específicamente
         Customer::create([
             'firstname' => 'Admin',
@@ -23,5 +21,19 @@ class CustomerSeeder extends Seeder
             'password' => "admin",
             'type' => 'admin',
         ]);
+
+        //Y a uno extra que no tiene permiso de admin
+        Customer::create([
+            'firstname' => 'Basic',
+            'surname' => 'Basic',
+            'email' => 'basic@test.com',
+            'password' => "basic",
+            'type' => 'basic',
+        ]);
+
+        Customer::factory()->count(10)->create();
+
+
+
     }
 }
