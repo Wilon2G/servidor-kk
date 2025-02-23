@@ -20,4 +20,7 @@
     <br>
     <input type="submit" name="logIn" value="LogIn" >
 </form>
+<h3>For development:</h3>
+<p>User:admin@test.com</p>
+<p>password:admin</p>
 @endsection
