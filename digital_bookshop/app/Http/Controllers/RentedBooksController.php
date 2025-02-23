@@ -14,11 +14,11 @@ class RentedBooksController extends Controller
         }
 
         $user=auth()->user();
-        $rentedBooks=BorrowedBook::getBooksByCustomer($user["id"]);
+        $rentals=BorrowedBook::getBooksByCustomer($user["id"]);
 
         //dd($rentedBooks);
 
-        return view("main.rentedBooks",["customer"=>$user,"rentedBooks"=>$rentedBooks]);
+        return view("main.rentedBooks",["customer"=>$user,"rentals"=>$rentals]);
     }
 
 
@@ -29,8 +29,6 @@ class RentedBooksController extends Controller
         if (!auth()->check()) {
             return redirect()->route("login")->withErrors(["Unauthorised"=>"You need to logged in to rent some books!"]);
         }
-
-
         //Devuelve false si el libro está actualmente alquilado
         $rental = BorrowedBook::rent(auth()->user()["id"],$id);
 

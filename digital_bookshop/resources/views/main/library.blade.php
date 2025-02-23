@@ -16,10 +16,11 @@
                                 <p class="card-text text-danger fw-bold">💲{{ number_format($book->price, 2) }}</p>
 
                                 <!-- Botón Buy -->
-                                <button class="btn btn-primary btn-sm w-100 mb-2">🛒 Buy</button>
 
                                 <!-- Botón Rent con condicional -->
                                 @if ($customer)
+                                <a href="{{route("buyBook",["id"=> $book->id])}}" class="btn btn-primary btn-sm w-100 mb-2">🛒 Buy</a>
+
                                     <!-- Si el usuario ya ha alquilado el libro -->
                                     @if (in_array($book->id, $borrowedBooks))
                                         <a href="{{route("rentedBooks")}}" class="btn btn-success btn-sm w-100 mb-2">✅ Already
@@ -32,11 +33,13 @@
 
                                     <!-- Si el usuario es premium, permite eliminar el libro -->
                                     @if ($customer["type"] === "admin")
-                                        <a href="{{route(deleteBook,["id"=>$book->id])}}" class="btn btn-danger btn-sm w-100">⚠️ Delete Book</a>
+                                        <a href="{{route("deleteBook",["id"=>$book->id])}}" class="btn btn-danger btn-sm w-100">⚠️ Delete Book</a>
                                     @endif
                                 @else
+                                <a href="{{route("login")}}" class="btn btn-secondary btn-sm w-100 mb-2">🔐 Buy</a>
+
                                     <!-- Si el usuario no está autenticado, muestra el botón de login -->
-                                    <a href="#" class="btn btn-secondary btn-sm w-100">🔐 Rent</a>
+                                    <a href="{{route("login")}}" class="btn btn-secondary btn-sm w-100">🔐 Rent</a>
                                 @endif
 
                             </div>

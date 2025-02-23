@@ -29,17 +29,16 @@ class BorrowedBook extends Model
     }
 
     /**
-     * El nombre lo describe bastante bien, devuelve los books de un customer específico dado su id
+     * Devuelve los rentals de un cliente, esto incluye los libros.
      *
      * @param int $customerId
      */
     public static function getBooksByCustomer(int $customerId)
     {
-        // Buscar los alquileres activos (libros que no han sido devueltos)
-        return Book::whereHas('borrowedBooks', function ($query) use ($customerId) {
-            $query->where('customer_id', $customerId)
-                  ->whereNull('returnedAt'); // Solo los libros no devueltos
-        })->get();
+        return self::where('customer_id', $customerId)
+        ->whereNull('returnedAt') // Solo los libros no devueltos
+        ->with('book') // Cargar relación con Book !!
+        ->get();
     }
 
 

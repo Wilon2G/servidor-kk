@@ -4,6 +4,7 @@ use App\Http\Controllers\AddBookController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MyBooksController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RentedBooksController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,11 @@ Route::get('/addBook', [AddBookController::class,"index"])->name("addBook");
 
 Route::post('/addBook/validation', [AddBookController::class,"validation"])->name("addBook.validation");
 
-Route::get('/deleteBook', [IndexController::class,"deleteBook"])->name("deleteBook");
+Route::get('/deleteBook/{id}', [IndexController::class,"deleteBook"])->name("deleteBook");
 
 Route::get('/register', [RegisterController::class,"index"])->name("register");
+
+Route::get('/myBooks', [MyBooksController::class,"index"])->name("myBooks");
+
+Route::get('/buyBook/{id}', [IndexController::class,"buyBook"])->name("buyBook");
+
