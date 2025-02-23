@@ -13,8 +13,8 @@
             <div class="card shadow-lg border-0">
                 <div class="card-body">
                     <h5 class="card-title text-primary">{{ $book->title }}</h5>
-                    <p class="card-text text-muted">Autor: {{ $book->author ?? 'Desconocido' }}</p>
-                    <a href="#" class="btn btn-primary btn-sm">Return</a>
+                    <p class="card-text text-muted">Author: {{ $book->author ?? 'Unknown' }}</p>
+                    <a href="{{ route('rentedBooks.return',['id'=>$book->id]) }}" class="btn btn-primary btn-sm">Return</a>
                 </div>
             </div>
         </div>

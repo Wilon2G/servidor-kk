@@ -31,7 +31,7 @@ class CustomerSeeder extends Seeder
             'type' => 'basic',
         ]);
 
-        Customer::factory()->count(10)->create();
+        Customer::factory()->count(5)->create();
 
 
 

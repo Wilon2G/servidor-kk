@@ -21,8 +21,8 @@
                                 <!-- Botón Rent con condicional -->
                                 @if ($customer)
                                     <!-- Si el usuario ya ha alquilado el libro -->
-                                    @if (in_array($book->id, $customer->toArray()))
-                                        <a href="#" class="btn btn-success btn-sm w-100 mb-2">✅ Already
+                                    @if (in_array($book->id, $borrowedBooks))
+                                        <a href="{{route("rentedBooks")}}" class="btn btn-success btn-sm w-100 mb-2">✅ Already
                                             rented!</a>
                                     @else
                                         <!-- Si el usuario puede alquilar el libro -->
@@ -32,7 +32,7 @@
 
                                     <!-- Si el usuario es premium, permite eliminar el libro -->
                                     @if ($customer["type"] === "admin")
-                                        <a href="#" class="btn btn-danger btn-sm w-100">⚠️ Delete Book</a>
+                                        <a href="{{route(deleteBook,["id"=>$book->id])}}" class="btn btn-danger btn-sm w-100">⚠️ Delete Book</a>
                                     @endif
                                 @else
                                     <!-- Si el usuario no está autenticado, muestra el botón de login -->

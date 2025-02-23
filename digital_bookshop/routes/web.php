@@ -29,12 +29,14 @@ Route::get('/logOut', [LogoutController::class,"index"])->name("logOut");
 
 Route::get('/rentedBooks', [RentedBooksController::class,"index"])->name("rentedBooks");
 
+Route::get('/rentedBooks/return/{id}', [RentedBooksController::class,"returnBook"])->name("rentedBooks.return");
+
 Route::get('/rentBook/{id}', [RentedBooksController::class,"rentBook"])->name("rentBook");
-
-
 
 Route::get('/addBook', [AddBookController::class,"index"])->name("addBook");
 
 Route::post('/addBook/validation', [AddBookController::class,"validation"])->name("addBook.validation");
+
+Route::get('/deleteBook', [IndexController::class,"deleteBook"])->name("deleteBook");
 
 Route::get('/register', [RegisterController::class,"index"])->name("register");

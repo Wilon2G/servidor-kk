@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
 
             // Restricción para evitar alquiler duplicado del mismo libro por el mismo usuario (Igual lo cambio en el futuro)
-            $table->unique(['book_id', 'customer_id']);
+            //$table->unique(['book_id', 'customer_id']); Al final lo he quitado porque quiero que un usuario pueda alquilar dos veces el mismo libro si antes lo ha devuelto
         });
     }
 
