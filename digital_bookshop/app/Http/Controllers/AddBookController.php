@@ -25,7 +25,7 @@ class AddBookController extends Controller
             'ISBN' => 'required|string|max:13|unique:books,ISBN',
             'author' => 'required|string|max:255',
             'stock' => 'required|integer|min:0',
-            'price' => 'required|float|min:0',
+            'price' => 'required|numeric|min:0',
         ]);
 
         Book::create($validated);

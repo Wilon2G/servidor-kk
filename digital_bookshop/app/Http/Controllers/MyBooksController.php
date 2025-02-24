@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class MyBooksController extends Controller
         }
 
         $customer=auth()->user();
+
 
         $sales=Sale::where("customer_id",auth()->user()["id"])->get();
         $purchases=[];
