@@ -15,17 +15,12 @@ return new class extends Migration
     {
         Schema::create('borrowed_books', function (Blueprint $table) {
             $table->id(); // ID autoincremental de la relación
-            $table->unsignedBigInteger('book_id');
-            $table->unsignedBigInteger('customer_id');
-            $table->dateTime('rentedAt')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->foreignId('book_id')->constrained()->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->dateTime('rentedAt')->default(now());
             $table->dateTime('dueTo');
             $table->dateTime('returnedAt')->nullable();
             $table->timestamps();
-
-            // Claves foráneas con eliminación en cascada
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-
             // Restricción para evitar alquiler duplicado del mismo libro por el mismo usuario (Igual lo cambio en el futuro)
             //$table->unique(['book_id', 'customer_id']); Al final lo he quitado porque quiero que un usuario pueda alquilar dos veces el mismo libro si antes lo ha devuelto
         });
